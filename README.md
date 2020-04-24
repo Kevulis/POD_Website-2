@@ -2,4 +2,4 @@
 Final Project
 CCT
 
-@Kevin, Larissa, Jornada, Adriana, Claudio
+@Kevin, Larissa, Jordana, Adriana, Claudio
