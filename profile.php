@@ -1,5 +1,3 @@
-<?php include('server.php') ?>
-
 
 <!--
 ---------------------------- html --------------------------------
@@ -17,7 +15,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Register | Plenty of Dogs</title>
+    <title>My Profile | Plenty of Dogs</title>
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
   <a class="navbar-brand" href="index.html">
@@ -33,146 +31,39 @@
   </div>
 
 </div>
-                <a class="btn btn-light mr-5" href="login.php" role="button">Already a member? </a>
-      
-          
+                <a class="btn btn-light mr-5" href="register.php" role="button">Not a member? </a>
+           
 </nav>
-  
-
-    
-    
     </head>
   <body>
      
      <br>
     
-
-      
-      
       <br>
  
           <div class="container" align="center">
                
-              <img src="img/signup.png" align="center" width="400" height="200">
+              <img src="img/login.png" align="center" width="400" height="200">
               <br> <br>
         <div class="card" style="width: 30rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center">
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
-            
-<!--            FORM-->
-  
-         	
-      <form method="post" action="register.php">
-        <?php include('errors.php'); ?>     
-    <br>
-<div class="form-group md-form mr-3 ml-3 text-white"><br>
-  	  <input type="email" class="form-control" name="email" placeholder="Enter your e-mail" value="<?php echo $email; ?>" required>
-  	</div>
-<div class="form-group md-form mr-3 ml-3 text-white">
-  	  <input type="password" class="form-control" name="password_1" placeholder="Enter your password" value="<?php echo $password_1; ?>" required>
-  	</div>
-<div class="form-group md-form mr-3 ml-3 text-white">
-  	  <input type="password" class="form-control" name="password_2" placeholder="Re-enter your password" value="<?php echo $password_2; ?>" required>
-  	</div>
-          
-          
-    <div class="form-group mr-3 ml-3 text-white"><br>
-    <select class="custom-select" name="security_question" value="<?php echo $security_question; ?>" required>
-      <option value="">Select your security question</option>
-      <option value="1">What primary school did you attend?</option>
-      <option value="2">What is the middle name of your mother?</option>
-      <option value="3">What is the name of your first pet?</option>
-         </select><br>
-           </div>
-            
-             <div class="form-group mr-3 ml-3" >
-          <input  class="form-control" name="security_answer" placeholder="Enter your answer" value="<?php echo $security_answer; ?>" required><br>
-  
-     <br>
-  </div>            
-          
- <div class="form-group form-row mr-3 ml-3">
-     <div class="col-md-6 mb-3">
-      <select class="custom-select" name="city_id" value="<?php echo $city_id; ?>" >
-      <option value="">Select your city</option>
-      <option value="Antrim">Antrim</option>
-      <option value="Armagh">Armagh</option>
-      <option value="Carlow">Carlow</option>
-      <option value="Cavan">Cavan</option>
-      <option value="Clare">Clare</option>
-      <option value="Cork">Cork</option>
-      <option value="Donegal">Donegal</option>
-      <option value="Down">Down</option>
-      <option value="Dublin">Dublin</option>
-      <option value="Fermanagh">Fermanagh</option>
-      <option value="Galway">Galway</option>
-      <option value="Kerry">Kerry</option>
-      <option value="Kildare">Kildare</option>
-      <option value="Kilkenny">Kilkenny</option>
-      <option value="Laois">Laois</option>
-      <option value="Leitrim">Leitrim</option>
-      <option value="Limerick">Limerick</option>
-      <option value="Londonderry">Londonderry</option>
-      <option value="Longford">Longford</option>
-      <option value="Louth">Louth</option>
-      <option value="Mayo">Mayo</option>
-      <option value="Meath">Meath</option>
-      <option value="Monaghan">Monaghan</option>
-      <option value="Offaly">Offaly</option>
-      <option value="Roscommon">Roscommon</option>
-      <option value="Sligo">Sligo</option>
-      <option value="Tipperary">Tipperary</option>
-      <option value="Tyrone">Tyrone</option>
-      <option value="Waterford">Waterford</option>
-      <option value="Westmeath">Westmeath</option>
-      <option value="Wexford">Wexford</option>
-      <option value="Wicklow">Wicklow</option>
-         </select>
-         </div>         
-          
-<div class="col-md-6 mb-3 form-group">
-                    <input  class="form-control" name="region"  value="<?php echo $region; ?>" placeholder="Region (Optional)">  
-            <br><br>
-                </div>
-         
-<div class="form-group md-form mr-3 ml-3 text-white"><br>
-    <input type="submit" class="btn btn-light" name="reg_user" value="Register">
-  	</div>
-  	<p>
-  		Already a member? <a href="login.php">Sign in</a>
-  	</p>
-          </div>          
-  </form>      
-            
-            
-            
-            
-            
-            
-            
-<!--  ========== save for later ==============
-        
+<!--     ========================= profile box ==============================       -->
+
    
-         <div class="custom-control custom-radio text-white">
-  <input type="radio" id="terms" name="customRadio" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio1">I have <a href="terms.html">read & agreed </a> to the terms and conditions.</label><br>
-</div>  
+        <br>    
+
+
             
-      <br>      
-   <div class="input-group">
-       <button type="submit" class="btn btn-light" name="reg_user">Register</button>
-                
-            </div>
-            <br>
--->
-<!--</form>-->
-            <br>
+            
+            
+            
+            
+            
+            
+<!--      ======================================================================      -->
+              </div>        
       </div>
-      </div>  
-          
-       
-        <br>  
-          
-<!--  FORM END    -->
+
       
       
           
