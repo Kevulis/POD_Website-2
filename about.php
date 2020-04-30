@@ -16,6 +16,7 @@
 
 
 
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,7 +27,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Plenty of Dogs</title>
+    <title>About | Plenty of Dogs</title>
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
   <a class="navbar-brand" href="index.html">
@@ -44,53 +45,11 @@
           <a class="nav-item nav-link" href="messages.php">Messages</a>
           <a class="nav-item nav-link" href="search.php">Search Dogs</a>
   </div>
-  </div>
 
-        <a class="btn btn-light col-md-1 mr-2" href="logout.php" role="button">Logout</a>
-        
-          
+</div>
+<a class="btn btn-light col-md-1 mr-2" href="logout.php" role="button">Logout</a>
 </nav>
   
-    
-    
-     <!-----slides---->
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="img/slide1-01.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="img/slide3-01.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="img/slide2-01.png" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-     <!-- ----------->
-      
-    
-    <main role="main" class="container-expand-lg font-weight-bold text-light" style="background-image: url('img/bk-01.png'); background-size: cover;" align="center">
-      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">
-        <h1>Plenty Of Dogs!</h1>
-        <p class="lead">Join the collest platform to find the best mate for you best friend!</p>
-          <br>
-        <a class="btn btn-lg btn-light" href="signup.html" role="button">Sign Up Now! &raquo;</a>
-      </div>
-    </main>
 
     
     
@@ -98,63 +57,21 @@
   <body>
      
      <br>
-    <div class="content">
-  	<!-- notification message -->
-  	<?php if (isset($_SESSION['success'])) : ?>
-      <div class="error success" >
-      	<h3>
-          <?php 
-          	echo $_SESSION['success']; 
-          	unset($_SESSION['success']);
-          ?>
-      	</h3>
-      </div>
-  	<?php endif ?>
+    
 
-    <!-- logged in user information -->
-    <?php  if (isset($_SESSION['email'])) : ?>
-    	<p>Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
-    	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-    <?php endif ?>
-</div>
-      <br><br>
-    <!-- tutorial pics -->
-      
-      <div class="container" align="center">
-
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="img/dog1-01.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>Step 1</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="img/dog2-01.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>Step 2</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="img/dog3-01.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>Step 3</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-      </div>
       
       
-      <br><br><br>
+      <br>
       <div class="container">
+          
+          <img src="img/about.png" align="center" width="400" height="100">
 
         <div class="row">
           <div class="col-md-7">
               <br>
               <br>
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <h2 class="featurette-heading">What is POD? <span class="text-muted">Plenty of Dogs?</span></h2>
+            <p class="lead">Plenty of Dogs connects dog owners with trusted local people who would love to find an ideal partner for their dog, or sometimes meet up for a dog friendly date at a park or other location where puppies are welcome, to have fun and go along with. We make it easy to arrange date meetings, walks or playtime. Our aim is to help dog owners expand their social circle and aid in finding the ideal pair for breeding and building new friendships. We call it a win-win (or a woof-¬woof) situation for everyone involved.</p>
           </div>
           <div class="col-md-5">
             <img class="img-fluid" src="img/couple-01.png" width="300" height="300">
@@ -188,7 +105,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold">
-          <a href="terms.html" class="text-white">Terms of Use</a>
+          <a href="terms.php" class="text-white">Terms of Use</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -196,7 +113,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold">
-          <a href="about.html" class="text-white">About</a>
+          <a href="about.php" class="text-white">About</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -204,7 +121,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold text-light">
-          <a href="gallery.html"class="text-white">Gallery</a>
+          <a href="gallery.php"class="text-white">Gallery</a>
         </h6>
       </div>
       <!-- Grid column -->

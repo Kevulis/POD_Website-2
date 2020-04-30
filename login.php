@@ -79,42 +79,7 @@
   		Not yet a member? <a href="register.php">Sign up</a>
   	</p>
         
-  </form>       
-            
-            
-            
-            
-            
-            
-<!--
-        <form method="post" action="login.php">
-              	<?php include('errors.php'); ?>
-
-            <br>
-            <div class="input-group mr-3 ml-3 text-white">
-            <br>
-            <label>Your E-mail</label>
-            <input type="email" name="email">
-        
-            </div>
-            
-
-     
-            <div class="input-group md-form mr-3 ml-3 text-white ">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control" ><br>
-                      </div>
-                      
-            
-            
-      <br>      
-   <div class="input-group">
-       <button type="submit" class="btn btn-light" name="login_user">Login</button>
-                
-            </div>
-            <br>
-</form>
--->
+  </form>      
             <br>
       </div>
       </div>  

@@ -140,32 +140,9 @@
   	<p>
   		Already a member? <a href="login.php">Sign in</a>
   	</p>
-          </div>          
+     </div>          
   </form>      
-            
-            
-            
-            
-            
-            
-            
-<!--  ========== save for later ==============
-        
-   
-         <div class="custom-control custom-radio text-white">
-  <input type="radio" id="terms" name="customRadio" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio1">I have <a href="terms.html">read & agreed </a> to the terms and conditions.</label><br>
-</div>  
-            
-      <br>      
-   <div class="input-group">
-       <button type="submit" class="btn btn-light" name="reg_user">Register</button>
-                
-            </div>
-            <br>
--->
-<!--</form>-->
-            <br>
+      <br>
       </div>
       </div>  
           

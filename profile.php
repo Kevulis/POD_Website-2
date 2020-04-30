@@ -1,4 +1,17 @@
+[php]<?php
+include ‘server.php’;
+  session_start(); 
 
+  if (!isset($_SESSION['email'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['email']);
+  	header("location: login.php");
+  }
+?>
 <!--
 ---------------------------- html --------------------------------
 ------------------------------------------------------------------
@@ -52,7 +65,35 @@
    
         <br>    
 
-
+<?php
+/* Show data from the database */
+$data = $mysqli->query(“SELECT * FROM owner”);
+while ($email = $data->fetch_assoc()) {
+echo $email[‘email’] . ‘ ‘ . $password[‘password’] . ‘ ‘ . $region[‘region’] . ‘ <a href=‘?action=edit&id=’.$email[‘email’].’>Edit</a>’ . ‘<br>’;
+}
+?>
+<?php
+/* when the edit link has been triggered */
+if (isset($_GET[‘action’])) {
+if ($_GET[‘action’] == “edit”) {
+$email = $_GET[‘email’];
+$get_data = $mysqli->query(“SELECT * FROM owner WHERE email = $email”);
+$getData = $get_data->fetch_assoc();
+?>
+<br>
+Edit:<br>
+<form method=”post” action=”edit.php?id=<?php echo $email; ?>”>
+First Name:<br>
+<input type=”text” name=”username” value=”<?php echo $getData[‘username’] ?>” /><br><br>
+Middle Name:<br>
+<input type=”text” name=”region” value=”<?php echo $getData[‘region’] ?>” /><br><br>
+Last Name:<br>
+<input type=”text” name=”password” value=”<?php echo $getData[‘password’] ?>” /><br><br>
+<button type=”submit” name=”edit”>Edit</button> <a href=”index.php”>Cancel</a>
+</form>
+<?php }
+}
+?>
             
             
             
@@ -151,3 +192,4 @@
 <!-- Footer -->
  
 </html>
+[/php]
