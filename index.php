@@ -80,21 +80,19 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-     <!-- ----------->
+     <!-- ----banner------->
       
     
     <main role="main" class="container-expand-lg font-weight-bold text-light" style="background-image: url('img/bk-01.png'); background-size: cover;" align="center">
       <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">
-        <h1>Plenty Of Dogs!</h1>
-        <p class="lead">Join the collest platform to find the best mate for you best friend!</p>
+        <h1>Welcome to Plenty Of Dogs!</h1>
           <br>
-        <a class="btn btn-lg btn-light" href="signup.html" role="button">Sign Up Now! &raquo;</a>
+        <a class="btn btn-lg btn-light" href="search.php" role="button">Start searching!&raquo;</a>
       </div>
     </main>
-
-    
-    
+      <!---------------------- /banner----->
     </head>
+    
   <body>
      
      <br>
