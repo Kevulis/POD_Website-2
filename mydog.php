@@ -47,7 +47,7 @@ include('server.php')
  
           <div class="container" align="center">
                
-              <img src="img/login.png" align="center" width="400" height="200">
+              <img src="img/mydog.png" align="center" width="400" height="150">
               <br> <br>
         <div class="card" style="width: 30rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center">
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
@@ -99,7 +99,7 @@ include('server.php')
         </div>
     
     <div class="col-md-6 mb-3 form-group">
-     <select class="custom-select" name="size">
+     <select class="custom-select" name="age2">
       <option value="Small">Months</option>
       <option value="Medium">Years</option>  
         </select></div></div>
@@ -129,7 +129,24 @@ include('server.php')
       <option value="5">5</option> 
         </select></div></div>
      <br>   
-   
+
+      <br>
+    <div class="form-group form-row mr-3 ml-3">
+        <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="breeding">
+      <option value="">In Breeding Cycle?</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option> 
+            </select></div>
+    
+     <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="meeting">
+      <option value="">Available to Meet?</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option> 
+        </select></div></div>
+     <br> 
+    
     <input type="submit" value="Register Dog"  > 
 <br><br>
             
