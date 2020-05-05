@@ -1,17 +1,7 @@
 <?php
 session_start(); 
 
-  if (!isset($_SESSION['email'])) {
-  	$_SESSION['msg'] = "You must log in first";
-  	header('location: login.php');
-  }
-  if (isset($_GET['logout'])) {
-  	session_destroy();
-  	unset($_SESSION['email']);
-  	header("location: login.php");
-  }
-
-include('dbconnect.php')
+include('server.php')
 ?>
 
 <!--
@@ -30,7 +20,7 @@ include('dbconnect.php')
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>My Profile | Plenty of Dogs</title>
+    <title>My Dog | Plenty of Dogs</title>
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
   <a class="navbar-brand" href="index.html">
@@ -68,12 +58,83 @@ include('dbconnect.php')
             
             <!--     ========================= profile box ==============================       -->
  <br>    
-<h1> Profile</h1>
 
-Email: <?php echo $_SESSION['email']; ?> <br>
-Username: <?php echo $_SESSION['username']; ?> <br>
-City: <?php echo $_SESSION['city']; ?> <br>
-Region: <?php echo $_SESSION['region']; ?> <br>
+
+<form method="POST" action="server2.php">
+       
+    <div class="form-group md-form mr-3 ml-3 text-white">
+    <input type="text" class="form-control" name="name" placeholder="Dogs name"  > 
+    </div>
+    <br>
+    <div class="form-group form-row mr-3 ml-3">
+      <select class="custom-select" name="breed">
+      <option value="">Select Breed</option>
+      <option value="Auau">Auau</option>
+      <option value="Golden">Golden</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group form-row mr-3 ml-3">
+      <select class="custom-select" name="sex">
+      <option value="">Select Sex</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group form-row mr-3 ml-3">
+      <select class="custom-select" name="size">
+      <option value="">Select Size</option>
+      <option value="Small">Small</option>
+      <option value="Medium">Medium</option>
+      <option value="Large">Large</option>
+      <option value="Extra Large">Extra Large</option>
+        </select>
+    </div>
+
+    <br>
+    <div class="form-group form-row mr-3 ml-3">
+        <div class="col-md-6 mb-3 form-group">
+     <input type="text" class="form-control" name="age" placeholder="Age"  > 
+        </div>
+    
+    <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="size">
+      <option value="Small">Months</option>
+      <option value="Medium">Years</option>  
+        </select></div></div>
+      <br>  
+        
+      <div class="form-group form-row mr-3 ml-3">
+        <div class="col-md-6 mb-3 form-group">
+    <input type="text" class="form-control" name="weight" placeholder="Weight in lb"  > 
+          </div>
+         
+     <div class="col-md-6 mb-3 form-group">
+    <input type="text" class="form-control" name="height" placeholder="Height in inch"  > 
+          </div></div>
+  <br>
+    <div class="form-group form-row mr-3 ml-3">
+        <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="behaviour">
+      <option value="">Dog Behaviour</option>
+      <option value="Friendly">Friendly</option>
+      <option value="Happy">Happy</option> 
+            </select></div>
+    
+     <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="energy">
+      <option value="">Dog Energy Level</option>
+      <option value="1">1</option>
+      <option value="5">5</option> 
+        </select></div></div>
+     <br>   
+   
+    <input type="submit" value="Register Dog"  > 
+<br><br>
+            
+     </form>
+            
 
 
             
@@ -87,7 +148,7 @@ Region: <?php echo $_SESSION['region']; ?> <br>
               </div>        
       </div>
 
-      
+   <br><br><br>   
       
           
      <img src="img/grass-01.png" class="img-fluid" alt="Responsive image">
