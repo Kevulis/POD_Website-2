@@ -11,7 +11,7 @@ session_start();
   	header("location: login.php");
   }
 
-include('server.php')
+include('dbconnect.php')
 ?>
 
 <!--
@@ -46,15 +46,10 @@ include('server.php')
   </div>
 
 </div>
-                <a class="btn btn-light mr-5" href="register.php" role="button">Not a member? </a>
-           
+                <a class="btn btn-light mr-5" href="register.php" role="button">Not a member? </a>          
 </nav>
     </head>
-  <body>
-     
-     <br>
-    
-      <br>
+  <body><br><br>
  
           <div class="container" align="center">
                
@@ -62,7 +57,12 @@ include('server.php')
               <br> <br>
         <div class="card" style="width: 30rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center">
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
-<!--     ========================= profile box ==============================       -->
+
+            
+            
+            
+            
+            <!--     ========================= profile box ==============================       -->
  <br>    
 <h1> Profile</h1>
 
@@ -161,7 +161,7 @@ Region: <?php echo $_SESSION['region']; ?> <br>
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> POD - Plenty of Dogs</a>
+    <a > POD - Plenty of Dogs</a>
   </div>
   <!-- Copyright -->
 
