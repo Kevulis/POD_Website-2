@@ -50,14 +50,14 @@ include('dbconnect.php')
   </div>
 
 </div>
-                <a class="btn btn-light mr-5" href="register.php" role="button">Not a member? </a>          
+        <a class="btn btn-light col-md-1 mr-2" href="logout.php" role="button">Logout</a>
 </nav>
     </head>
   <body><br><br>
  
           <div class="container" align="center">
                
-              <img src="img/login.png" align="center" width="400" height="200">
+              <img src="img/myprofile.png" align="center" width="400" height="150">
               <br> <br>
         <div class="card" style="width: 30rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center">
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
@@ -68,27 +68,29 @@ include('dbconnect.php')
             
             <!--     ========================= profile box ==============================       -->
  <br>    
-<h1> Profile</h1>
 
-Email: <?php echo $_SESSION['email']; ?> <br>
-Username: <?php echo $_SESSION['username']; ?> <br>
-City: <?php echo $_SESSION['city']; ?> <br>
-Region: <?php echo $_SESSION['region']; ?> <br>
+<p class="text-white"><b>Your e-mail:</b> <?php echo $_SESSION['email']; ?> </p>
+<p class="text-white"><b>Username:</b> <?php echo $_SESSION['username']; ?> 
+<p class="text-white"><b>City:</b> <?php echo $_SESSION['city_id']; ?> 
+<p class="text-white"><b>Region:</b> <?php echo $_SESSION['region']; ?> <br><br>
 
 
-            
-            
+<div class="form-group">
+    <a type="submit" class="btn btn-light" href="edit-profile.php" role="button">Edit Profile</a>
+</div>
+        
+         
             
             
             
             
             
 <!--      ======================================================================      -->
-              </div>        
+           <br>   </div>        
       </div>
 
       
-      
+    <br><br>  
           
      <img src="img/grass-01.png" class="img-fluid" alt="Responsive image">
    

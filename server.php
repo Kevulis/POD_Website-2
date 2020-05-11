@@ -44,8 +44,8 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO owner (email, password, security_question, security_answer, city_id, region) 
-  			  VALUES('$email', '$password_1', '$security_question', '$security_answer', '$city_id', '$region')";
+  	$query = "INSERT INTO owner (email, password, security_question, security_answer, city_id, region, create_date) 
+  			  VALUES('$email', '$password_1', '$security_question', '$security_answer', '$city_id', '$region', NOW())";
   	mysqli_query($db, $query);
   	$_SESSION['email'] = $email;
   	$_SESSION['success'] = "You are now logged in";
@@ -70,7 +70,14 @@ if (isset($_POST['login_user'])) {
   	$query = "SELECT * FROM owner WHERE email='$email' AND password='$password_1'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
-  	  $_SESSION['email'] = $email;
+        while ($row=mysqli_fetch_row($results))
+    {
+     $_SESSION['email'] = $row[0];
+     $_SESSION['username'] = $row[1];
+     $_SESSION['city_id'] =  $row[5]; 
+     $_SESSION['region'] =  $row[6]; 
+    }
+  	  
   	  $_SESSION['success'] = "You are now logged in";
   	  header('location: index.php');
   	}else {

@@ -1,7 +1,7 @@
 [php]
 
 <?php
-include ‘connection.php’;
+include ‘dbconnect.php’;
 
 if (isset($_POST[‘edit’])) {
 

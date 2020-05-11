@@ -1,5 +1,20 @@
-<?php include('server.php') ?>
+<?php
+session_start(); 
+  if (!isset($_SESSION['email'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['email']);
+  	header("location: login.php");
+  }
 
+include('dbconnect.php')
+
+
+
+?>
 
 <!--
 ---------------------------- html --------------------------------
@@ -17,7 +32,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Login | Plenty of Dogs</title>
+    <title>Edit Profile | Plenty of Dogs</title>
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
   <a class="navbar-brand" href="index.html">
@@ -28,68 +43,79 @@
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav"> 
-         <a class="nav-item nav-link" href="gallery.html">Gallery</a>
-          <a class="nav-item nav-link" href="about.html">About</a>
+         <a class="nav-item nav-link" href="gallery.php">Gallery</a>
+          <a class="nav-item nav-link" href="about.php">About</a>
+          <a class="nav-item nav-link" href="profile.php">My Profile</a>
+          <a class="nav-item nav-link" href="mydog.php">My Dog</a>
+          <a class="nav-item nav-link" href="messages.php">Messages</a>
+          <a class="nav-item nav-link" href="search.php">Search Dogs</a>
   </div>
 
 </div>
-                <a class="btn btn-light mr-5" href="register.php" role="button">Not a member? </a>
-      
-          
+        <a class="btn btn-light col-md-1 mr-2" href="logout.php" role="button">Logout</a>
 </nav>
-  
-
-    
-    
     </head>
-  <body>
-     
-     <br>
-    
-
-      
-      
-      <br>
+  <body><br><br>
  
           <div class="container" align="center">
                
-              <img src="img/login.png" align="center" width="400" height="200">
+              <img src="img/myprofile.png" align="center" width="400" height="150">
               <br> <br>
         <div class="card" style="width: 30rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center">
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
-            
-<!--            FORM-->
-   
-            
-     <form method="post" action="login.php">
-  	<?php include('errors.php'); ?>
 
-<div class="form-group md-form mr-3 ml-3 text-white"><br>
-  	  <input type="email" class="form-control" name="email" placeholder="Enter your e-mail" >
-  	</div>
             
-<div class="form-group md-form mr-3 ml-3 text-white"><br>
-<input type="password" name="password_1" class="form-control" placeholder="Enter your password" >
-  	</div>
-        
-  	<div class="form-group">
-        <input type="submit" class="btn btn-light" name="login_user" value="Login">
-  	</div>
-  	<p class="text-white">
-  		Not yet a member? <a href="register.php">Sign up</a>
-  	</p>
-        
-  </form>      
-            <br>
+            
+            
+            
+            <!--     ========================= profile box ==============================       -->
+ <br>    
+<form action="" method="POST">
+
+
+
+    <input type="text" name="username" placeholder="username" /><br><br>
+    <input type="text" name="city_id" placeholder="city"/><br><br>
+        <input type="text" name="region" placeholder="region"/><br><br>
+    <button type="submit" name="edit">Edit User</button>
+</form>
+
+<?php
+  //Catch Post Data and Process
+if(isset($_POST['edit'])){
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $city_id = $_POST['city_id'];
+    $region  = $_POST['region'];
+    //Check if content is present
+    if(!empty($username)  && !empty($city_id) && !empty($region)){
+        //Update DB
+        $q = mysql_query("UPDATE owner SET username='$username', city_id='$city_id', region='$region' WHERE email='$email'");
+        //Create Debug Message
+        if(!$q){
+            die("Failed to update database check query string or input values.", mysql_error());
+        }
+        //If query is good, head back to desired page.
+        header("Location: profile.php");
+        exit;
+    }else{
+        //Create Empty Error Message
+        $error = "Error! No Changes Made";
+    }
+}
+      
+ ?>        
+            
+            
+            
+            
+            
+<!--      ======================================================================      -->
+           <br>   </div>        
       </div>
-      </div>  
-          
-       
-        <br>  
-          
-<!--  FORM END    -->
+
       
-      
+    <br><br>  
           
      <img src="img/grass-01.png" class="img-fluid" alt="Responsive image">
    
@@ -167,7 +193,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> POD - Plenty of Dogs</a>
+    <a > POD - Plenty of Dogs</a>
   </div>
   <!-- Copyright -->
 
