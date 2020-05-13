@@ -73,7 +73,49 @@ include('server.php')
 <div class="form-group">
     <a type="submit" class="btn btn-light" href="adddog.php" role="button">Add a new dog!</a>
 </div>
-<br>            
+<br> 
+<form action="" method="POST" enctype="multipart/form-data">
+  <table align="center">
+  <tr>
+        <td><label>Profile Image</label></td>
+        <td><label>:</label></td>
+        <td><label><input type="file" name="img" required/></label></td>
+  </tr> 
+  <tr>
+        <td><label></label></td>
+        <td><label></label></td>
+        <td><label><input type="submit" name="save_btn" value="Save"/></label></td>
+  </tr>
+  </table>           
+</form> 
+            
+<?php
+            if(isset($_POST['save_btn']))
+            {
+                if($con = mysqli_connect('localhost', 'root', 'root', 'POD'))
+                {
+                    $filetemp = $_FILES['img']['tmp_name'];
+                    $filename = $_FILES['img']['name'];
+                    $filetype = $_FILES['img']['type'];
+                    $filepath = "pics/".$filename;
+                    
+                    move_upload_file($filetemp, $filepath);
+                    $query = mysqli_query($con,"call imageInsert('$filename', '$filepath', '$filetype')");
+                    if (query)
+                    {
+                        echo "Image uploaded!";
+                    }
+                    else
+                    {
+                      echo "Upload failed!";  
+                    }
+                }
+            }
+?>
+
+                    
+            
+            
 <p class="text-white"><b>My dog: </b> <?php echo $_SESSION['dog_name']; ?> </p>
 <p class="text-white"><b>Gender:</b> <?php echo $_SESSION['gender']; ?> </p>
 <p class="text-white"><b>Breed:</b> <?php echo $_SESSION['breed']; ?> </p>
