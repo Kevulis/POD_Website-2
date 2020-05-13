@@ -137,9 +137,6 @@
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
     <input type="submit" class="btn btn-light" name="reg_user" value="Register">
   	</div>
-  	<p>
-  		Already a member? <a href="login.php">Sign in</a>
-  	</p>
      </div>          
   </form>      
       <br>

@@ -33,7 +33,7 @@ include('dbconnect.php')
     <title>My Profile | Plenty of Dogs</title>
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
-  <a class="navbar-brand" href="index.html">
+  <a class="navbar-brand" href="index.php">
         <img src="img/POD_logo-02.png" width="100" height="100" class="d-inline-block align-top mr-5 ml-5" alt="Home"> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -69,7 +69,7 @@ include('dbconnect.php')
             <!--     ========================= profile box ==============================       -->
  <br>    
 
-<p class="text-white"><b>Your e-mail:</b> <?php echo $_SESSION['email']; ?> </p>
+<p class="text-white"><b>That's your e-mail:</b> <?php echo $_SESSION['email']; ?> </p>
 <p class="text-white"><b>Username:</b> <?php echo $_SESSION['username']; ?> 
 <p class="text-white"><b>City:</b> <?php echo $_SESSION['city_id']; ?> 
 <p class="text-white"><b>Region:</b> <?php echo $_SESSION['region']; ?> <br><br>

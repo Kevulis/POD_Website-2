@@ -10,7 +10,7 @@ session_start();
   	header("location: login.php");
   }
 
-include('dbconnect.php')
+include('server.php')
 
 
 
@@ -35,7 +35,7 @@ include('dbconnect.php')
     <title>Edit Profile | Plenty of Dogs</title>
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
-  <a class="navbar-brand" href="index.html">
+  <a class="navbar-brand" href="index.php">
         <img src="img/POD_logo-02.png" width="100" height="100" class="d-inline-block align-top mr-5 ml-5" alt="Home"> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -61,7 +61,7 @@ include('dbconnect.php')
                
               <img src="img/myprofile.png" align="center" width="400" height="150">
               <br> <br>
-        <div class="card" style="width: 30rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center">
+        <div class="card" style="width: 25rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center">
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
 
             
@@ -70,41 +70,26 @@ include('dbconnect.php')
             
             <!--     ========================= profile box ==============================       -->
  <br>    
-<form action="" method="POST">
+<form method="post" action="edit-profile.php">
+  <?php include('errors.php'); ?>   
+   
+    <p class="text-white"><b>That's your e-mail:</b> <?php echo $_SESSION['email']; ?>. It can't be changed. </p>
 
-
-
-    <input type="text" name="username" placeholder="username" /><br><br>
-    <input type="text" name="city_id" placeholder="city"/><br><br>
-        <input type="text" name="region" placeholder="region"/><br><br>
-    <button type="submit" name="edit">Edit User</button>
+<div class="form-group md-form mr-3 ml-3 text-white"><br>
+    <input type="text" name="username" class="form-control" placeholder="username" value="<?php echo $username; ?>"/>
+    </div>
+<div class="form-group md-form mr-3 ml-3 text-white"><br>
+    <input type="text" name="city_id" class="form-control" placeholder="Edit city" value="<?php echo $city_id; ?>"/>
+    </div>
+<div class="form-group md-form mr-3 ml-3 text-white"><br>
+    <input type="text" name="region" class="form-control" placeholder="Edit region" value="<?php echo $region; ?>"/>
+    </div>
+<div class="form-group md-form mr-3 ml-3 text-white"><br>
+    <input type="submit" class="btn btn-light" name="update_user" value="Update User">
+  	</div>
 </form>
 
-<?php
-  //Catch Post Data and Process
-if(isset($_POST['edit'])){
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $city_id = $_POST['city_id'];
-    $region  = $_POST['region'];
-    //Check if content is present
-    if(!empty($username)  && !empty($city_id) && !empty($region)){
-        //Update DB
-        $q = mysql_query("UPDATE owner SET username='$username', city_id='$city_id', region='$region' WHERE email='$email'");
-        //Create Debug Message
-        if(!$q){
-            die("Failed to update database check query string or input values.", mysql_error());
-        }
-        //If query is good, head back to desired page.
-        header("Location: profile.php");
-        exit;
-    }else{
-        //Create Empty Error Message
-        $error = "Error! No Changes Made";
-    }
-}
       
- ?>        
             
             
             

@@ -9,7 +9,7 @@ session_start();
   	unset($_SESSION['email']);
   	header("location: login.php");
   }
-include('server.php')
+include('server2.php')
 ?>
 
 <!--
@@ -68,31 +68,103 @@ include('server.php')
  <br>    
 
 
+<form method="POST" action="mydog.php">
+       
+    <div class="form-group md-form mr-3 ml-3 text-white">
+    <input type="text" class="form-control" name="dog_name" placeholder="Dogs name" value="<?php echo $dog_name; ?>" > 
+    </div>
+    <br>
+    <div class="form-group form-row mr-3 ml-3">
+      <select class="custom-select" name="breed_id" value="<?php echo $breed_id; ?>">
+      <option value="">Select Breed</option>
+      <option value="Auau">Auau</option>
+      <option value="Golden">Golden</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group form-row mr-3 ml-3">
+      <select class="custom-select" name="gender" value="<?php echo $gender; ?>">
+      <option value="">Select Sex</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group form-row mr-3 ml-3">
+      <select class="custom-select" name="size" value="<?php echo $size; ?>">
+      <option value="">Select Size</option>
+      <option value="Small">Small</option>
+      <option value="Medium">Medium</option>
+      <option value="Large">Large</option>
+      <option value="Extra Large">Extra Large</option>
+        </select>
+    </div>
 
+    <br>
+    <div class="form-group form-row mr-3 ml-3">
+        <div class="col-md-6 mb-3 form-group">
+     <input type="text" class="form-control" name="age_months" placeholder="Age" value="<?php echo $age_months; ?>" > 
+        </div>
     
-<div class="form-group">
-    <a type="submit" class="btn btn-light" href="adddog.php" role="button">Add a new dog!</a>
-</div>
-<br>            
-<p class="text-white"><b>My dog: </b> <?php echo $_SESSION['dog_name']; ?> </p>
-<p class="text-white"><b>Gender:</b> <?php echo $_SESSION['gender']; ?> </p>
-<p class="text-white"><b>Breed:</b> <?php echo $_SESSION['breed']; ?> </p>
-<p class="text-white"><b>Size:</b> <?php echo $_SESSION['size']; ?> </p>
-<p class="text-white"><b>Age:</b> <?php echo $_SESSION['age_months']; ?><?php echo $_SESSION['age_years']; ?>  </p>
-<p class="text-white"><b>Height:</b> <?php echo $_SESSION['height']; ?> </p>
-<p class="text-white"><b>Weight:</b> <?php echo $_SESSION['weight']; ?>  </p>
-<p class="text-white"><b>Energy Level:</b> <?php echo $_SESSION['energy_level']; ?> </p>
-<p class="text-white"><b>Behaviour:</b> <?php echo $_SESSION['behaviour_id']; ?> </p>
-<p class="text-white"><b>Breeding cycle:</b> <?php echo $_SESSION['breeding']; ?> </p>
-<p class="text-white"><b>Available to meet:</b> <?php echo $_SESSION['meeting']; ?> </p>
+    <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="age_years" value="<?php echo $age_years; ?>">
+      <option value="Small">Months</option>
+      <option value="Medium">Years</option>  
+        </select></div></div>
+      <br>  
+        
+      <div class="form-group form-row mr-3 ml-3">
+        <div class="col-md-6 mb-3 form-group">
+    <input type="text" class="form-control" name="weight" placeholder="Weight in lb" value="<?php echo $weight; ?>" > 
+          </div>
+         
+     <div class="col-md-6 mb-3 form-group">
+    <input type="text" class="form-control" name="height" placeholder="Height in inch" value="<?php echo $height; ?>"  > 
+          </div></div>
+  <br>
+    <div class="form-group form-row mr-3 ml-3">
+        <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="behaviour" value="<?php echo $behaviour; ?>">
+      <option value="">Dog Behaviour</option>
+      <option value="Friendly">Friendly</option>
+      <option value="Happy">Happy</option> 
+            </select></div>
+    
+     <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="energy_level" value="<?php echo $energy_level; ?>">
+      <option value="">Dog Energy Level</option>
+      <option value="1">1</option>
+      <option value="5">5</option> 
+        </select></div></div>
+     <br>   
 
-
-
-
-
-            
+      <br>
+    <div class="form-group form-row mr-3 ml-3">
+        <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="breeding" value="<?php echo $breeding; ?>">
+      <option value="">In Breeding Cycle?</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option> 
+            </select></div>
+    
+     <div class="col-md-6 mb-3 form-group">
+     <select class="custom-select" name="meeting" value="<?php echo $meeting; ?>">
+      <option value="">Available to Meet?</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option> 
+        </select></div></div>
+     <br> 
+        <div class="form-group md-form mr-3 ml-3 text-white">
+    <input type="text" class="form-control" name="desc" placeholder="Descrição" value="<?php echo $desc; ?>" > 
+    </div>
+    
+<div class="form-group md-form mr-3 ml-3 text-white"><br>
+    <input type="submit" class="btn btn-light" name="reg_dog" value="Register Dog">
+  	</div>
 <br><br>
-
+            
+     </form>
+            
 
 
             

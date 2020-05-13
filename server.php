@@ -77,12 +77,78 @@ if (isset($_POST['login_user'])) {
      $_SESSION['city_id'] =  $row[5]; 
      $_SESSION['region'] =  $row[6]; 
     }
+        //dog
+    $query = "SELECT * FROM dog WHERE owner_email='$email'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+        while ($row=mysqli_fetch_row($results))
+    {
+     $_SESSION['email'] = $row[0];
+     $_SESSION['dog_name'] = $row[2];
+     $_SESSION['gender'] =  $row[3]; 
+     $_SESSION['breed_id'] =  $row[4]; 
+     $_SESSION['size'] = $row[5];
+     $_SESSION['age_months'] = $row[6];
+     $_SESSION['age_years'] =  $row[7]; 
+     $_SESSION['height'] =  $row[8];
+     $_SESSION['weight'] = $row[9];
+     $_SESSION['energy_level'] = $row[10];
+     $_SESSION['behaviour_id'] =  $row[11]; 
+     $_SESSION['breeding'] =  $row[12];
+     $_SESSION['meeting'] =  $row[13];
+    }
   	  
   	  $_SESSION['success'] = "You are now logged in";
   	  header('location: index.php');
   	}else {
   		array_push($errors, "Wrong email/password combination");
   	}
+  }
+}
+}
+
+// UPDATE USER
+if (isset($_POST['update_user'])) {
+  $email = mysqli_real_escape_string($db, $_POST['email']);
+  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $city_id = mysqli_real_escape_string($db, $_POST['city_id']);
+  $region = mysqli_real_escape_string($db, $_POST['region']);
+    
+
+if (count($errors) == 0) {
+    $query = "UPDATE owner SET username='$username', city_id='$city_id', region='$region'";
+    $results = mysqli_query($db, $query);
+    $_SESSION['email'] = $email;
+  	$_SESSION['success'] = "User profile updated";
+  	header('location: profile.php');
+  }
+}
+
+if (isset($_POST['reg_dog'])) {
+  // receive all input values from the form
+  $dog_name = mysqli_real_escape_string($db, $_POST['dog_name']);
+  $breed_id = mysqli_real_escape_string($db, $_POST['breed_id']);
+  $gender = mysqli_real_escape_string($db, $_POST['gender']);
+  $size = mysqli_real_escape_string($db, $_POST['size']);
+  $age_months = mysqli_real_escape_string($db, $_POST['age_months']);
+  $age_years = mysqli_real_escape_string($db, $_POST['age_years']);
+  $weight = mysqli_real_escape_string($db, $_POST['weight']);
+  $height = mysqli_real_escape_string($db, $_POST['height']);
+  $behaviour = mysqli_real_escape_string($db, $_POST['behaviour']);
+  $energy_level = mysqli_real_escape_string($db, $_POST['energy_level']);
+  $desc = mysqli_real_escape_string($db, $_POST['desc']);
+  $breeding = mysqli_real_escape_string($db, $_POST['breeding']);
+  $meeting = mysqli_real_escape_string($db, $_POST['meeting']);
+
+
+
+ if (count($errors) == 0) {
+  	$query = "INSERT INTO dog SET dog_name='$dog_name', gender='$gender', breed_id='$breed_id', size='$size', age_months='$age_months', age_years='$age_years', height='$height', weight='$weight', energy_level='$energy_level', behaviour_id='$behaviour', is_breeding_cycle='$breeding', is_avaliable_meeting='$meeting', description='$desc', create_time= NOW()";
+     
+  	mysqli_query($db, $query);
+  	$_SESSION['email'] = $row[0];
+  	$_SESSION['success'] = "Dod added!";
+  	header('location: mydog.php');
   }
 }
 

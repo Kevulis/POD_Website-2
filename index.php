@@ -85,8 +85,10 @@
     
     <main role="main" class="container-expand-lg font-weight-bold text-light" style="background-image: url('img/bk-01.png'); background-size: cover;" align="center">
       <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">
-        <h1>Welcome to Plenty Of Dogs!</h1>
-          <br>
+              <?php  if (isset($_SESSION['email'])) : ?>
+    	<h1>Welcome to Plenty of Dogs <strong><?php echo $_SESSION['username']; ?></strong>!</h1>
+    	<p> <a href="index.php?logout='1'" style="color: red;">Not you? Logout!</a> </p>
+    <?php endif ?>
         <a class="btn btn-lg btn-light" href="search.php" role="button">Start searching!&raquo;</a>
       </div>
     </main>
@@ -110,10 +112,7 @@
   	<?php endif ?>
 
     <!-- logged in user information -->
-    <?php  if (isset($_SESSION['email'])) : ?>
-    	<p>Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
-    	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-    <?php endif ?>
+
 </div>
       <br><br>
     <!-- tutorial pics -->
