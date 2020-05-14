@@ -94,41 +94,14 @@
      <div class="col-md-6 mb-3">
       <select class="custom-select" name="city_id" value="<?php echo $city_id; ?>" >
       <option value="">Select your city</option>
-      <option value="Antrim">Antrim</option>
-      <option value="Armagh">Armagh</option>
-      <option value="Carlow">Carlow</option>
-      <option value="Cavan">Cavan</option>
-      <option value="Clare">Clare</option>
-      <option value="Cork">Cork</option>
-      <option value="Donegal">Donegal</option>
-      <option value="Down">Down</option>
-      <option value="Dublin">Dublin</option>
-      <option value="Fermanagh">Fermanagh</option>
-      <option value="Galway">Galway</option>
-      <option value="Kerry">Kerry</option>
-      <option value="Kildare">Kildare</option>
-      <option value="Kilkenny">Kilkenny</option>
-      <option value="Laois">Laois</option>
-      <option value="Leitrim">Leitrim</option>
-      <option value="Limerick">Limerick</option>
-      <option value="Londonderry">Londonderry</option>
-      <option value="Longford">Longford</option>
-      <option value="Louth">Louth</option>
-      <option value="Mayo">Mayo</option>
-      <option value="Meath">Meath</option>
-      <option value="Monaghan">Monaghan</option>
-      <option value="Offaly">Offaly</option>
-      <option value="Roscommon">Roscommon</option>
-      <option value="Sligo">Sligo</option>
-      <option value="Tipperary">Tipperary</option>
-      <option value="Tyrone">Tyrone</option>
-      <option value="Waterford">Waterford</option>
-      <option value="Westmeath">Westmeath</option>
-      <option value="Wexford">Wexford</option>
-      <option value="Wicklow">Wicklow</option>
+      <option value="1">Dublin</option>
+      <option value="2">Cork</option>
+      <option value="3">Limerick</option>
+      <option value="4">Galway</option>
+      <option value="5">Waterford</option>
          </select>
          </div>         
-          
+   
 <div class="col-md-6 mb-3 form-group">
                     <input  class="form-control" name="region"  value="<?php echo $region; ?>" placeholder="Region (Optional)">  
             <br><br>
