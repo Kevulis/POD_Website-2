@@ -71,11 +71,127 @@ include('server.php')
 
 
 
+      <form class="form-horizontal" method="post" action="search.php">
 
+ <div class="form-group form-row mr-3 ml-3">
+     <div class="col-md-6 mb-3">
+      <select class="custom-select" name="breed" >
+      <option value="1">Golden</option>
+      <option value="2">Auau</option>
+     </select>
+     </div>  </div>
+          
+ <div class="form-group form-row mr-3 ml-3">
+     <div class="col-md-6 mb-3">
+      <select class="custom-select" name="size" >
+      <option value="1">Small</option>
+      <option value="2">Big</option>
+        </select>
+     </div>  </div>
+          
+ <div class="form-group form-row mr-3 ml-3">
+     <div class="col-md-6 mb-3">
+      <select class="custom-select" name="city" >
+      <option value="1">Dublin</option>
+      <option value="2">Galway</option>
+     </select>
+     </div>  </div>
+          
+ <div class="form-group form-row mr-3 ml-3">
+     <div class="col-md-6 mb-3">
+      <select class="custom-select" name="sex" >
+      <option value="1">Male</option>
+      <option value="2">Female</option>
+     </select>
+     </div>  </div>
+     
+ <div class="form-group form-row mr-3 ml-3">
+     <div class="col-md-6 mb-3">
+      <select class="custom-select" name="meeting" >
+      <option value="1">Available to meet</option>
+      <option value="2">Not available to meet</option>
+     </select>
+     </div>  </div>
+     
+  <div class="form-group form-row mr-3 ml-3">
+     <div class="col-md-6 mb-3">
+      <select class="custom-select" name="breeding" >
+      <option value="1">Yes</option>
+      <option value="2">No</option>
+     </select>
+     </div>  </div>         
+          
+   <div class="form-group md-form mr-3 ml-3 text-white"><br>
+    <input type="submit" class="btn btn-light" name="submit">
+  	</div>
+ </form>
 
+<div class="row">
+   <table class="table table-striped table-hover">
+        <thread>
+            <tr>
+                <th>Breed</th>
+                <th>Size</th>
+                <th>City</th>
+                <th>Sex</th>
+                <th>Available to meet</th>
+                <th>Breeding Cycle</th>
+            </tr>
+       
+       </thread>
+    </table>  
+    <tbody>
+        <?php
+        include("server.php");
+        if(isset($_POST['submit'])){
+            $breed= $_POST['breed'];
+            $size= $_POST['size'];
+            $city_id= $_POST['city_id'];
+            $gender= $_POST['gender'];
+            $meeting= $_POST['meeting'];
+            $breeding= $_POST['breeding'];
+            
+            if($breed != "" || $size != "" || $city_id != "" || $gender != "" || $meeting != "" || $breeding != ""){
+                 $query = "SELECT * FROM dog WHERE breed='$breed' OR size='$size' OR city_id='$city_id' OR gender='$gender' OR meeting='$meeting' OR breeding='$breeding'   "; 
+                
+                $data = mysqli_query($conn, $query) or die('error');
+                if(mysqli_num_rows($data)>0){
+                    while ($row = mysqli_fetch_assoc($data)){
+                        $breed=$row['breed'];
+                        $size=$row['size'];
+                        $city_id=$row['city_id'];
+                        $gender=$row['gender'];
+                        $meeting=$row['meeting'];
+                        $breeding=$row['breeding'];
+                    ?>
+                    <tr>
+                       <tb><?php echo $breed;?></tb>
+                       <tb><?php echo $size;?></tb>
+                       <tb><?php echo $city_id;?></tb>
+                       <tb><?php echo $gender;?></tb>
+                       <tb><?php echo $meeting;?></tb>
+                       <tb><?php echo $breeding;?></tb>
 
-
-
+                    </tr>
+                  <?php
+                        
+                    }
+               }
+            else{
+                ?>
+                  <tr> <td>Match not found :(</td>
+                  </tr>
+        <?PHP
+            }
+            }
+        }
+        ?>
+    </tbody>
+            
+            
+            
+            
+</div>
 
             
             
@@ -101,6 +217,7 @@ include('server.php')
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
       
           </body>
    
