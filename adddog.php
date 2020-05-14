@@ -31,7 +31,7 @@ include('server2.php')
     <title>My Dog | Plenty of Dogs</title>
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
-  <a class="navbar-brand" href="index.html">
+  <a class="navbar-brand" href="index.php">
         <img src="img/POD_logo-02.png" width="100" height="100" class="d-inline-block align-top mr-5 ml-5" alt="Home"> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,6 @@ include('server2.php')
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav"> 
-         <a class="nav-item nav-link" href="gallery.php">Gallery</a>
           <a class="nav-item nav-link" href="about.php">About</a>
           <a class="nav-item nav-link" href="profile.php">My Profile</a>
           <a class="nav-item nav-link" href="mydog.php">My Dog</a>
@@ -48,7 +47,7 @@ include('server2.php')
   </div>
 
 </div>
-                <a class="btn btn-light mr-5" href="register.php" role="button">Not a member? </a>          
+        <a class="btn btn-light col-md-1 mr-2" href="logout.php" role="button">Logout</a>
 </nav>
     </head>
   <body><br><br>
@@ -206,7 +205,7 @@ include('server2.php')
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold">
-          <a href="terms.html" class="text-white">Terms of Use</a>
+          <a href="terms.php" class="text-white">Terms of Use</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -214,7 +213,7 @@ include('server2.php')
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold">
-          <a href="about.html" class="text-white">About</a>
+          <a href="about.php" class="text-white">About</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -222,7 +221,7 @@ include('server2.php')
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold text-light">
-          <a href="gallery.html"class="text-white">Gallery</a>
+          <a href="index.php"class="text-white">Home</a>
         </h6>
       </div>
       <!-- Grid column -->

@@ -8,6 +8,7 @@ $errors = array();
 
 // connect to the database
 $db = mysqli_connect('localhost', 'root', 'root', 'POD');
+//$db = mysqli_connect('52.208.118.208:3306', 'admin', 'ljack123', 'POD');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -123,9 +124,9 @@ if (count($errors) == 0) {
   	header('location: profile.php');
   }
 }
-
+//REG DOGUINHO
 if (isset($_POST['reg_dog'])) {
-  // receive all input values from the form
+  // receive all input values from the form dog
   $dog_name = mysqli_real_escape_string($db, $_POST['dog_name']);
   $breed_id = mysqli_real_escape_string($db, $_POST['breed_id']);
   $gender = mysqli_real_escape_string($db, $_POST['gender']);
@@ -138,7 +139,7 @@ if (isset($_POST['reg_dog'])) {
   $energy_level = mysqli_real_escape_string($db, $_POST['energy_level']);
   $desc = mysqli_real_escape_string($db, $_POST['desc']);
   $breeding = mysqli_real_escape_string($db, $_POST['breeding']);
-  $meeting = mysqli_real_escape_string($db, $_POST['meeting']);
+  $meeting = mysqli_real_escape_string($db , $_POST['meeting']);
 
 
 

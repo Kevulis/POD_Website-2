@@ -9,11 +9,7 @@ session_start();
   	unset($_SESSION['email']);
   	header("location: login.php");
   }
-
 include('server.php')
-
-
-
 ?>
 
 <!--
@@ -32,7 +28,7 @@ include('server.php')
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Edit Profile | Plenty of Dogs</title>
+    <title>Search | Plenty of Dogs</title>
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
   <a class="navbar-brand" href="index.php">
@@ -58,48 +54,43 @@ include('server.php')
  
           <div class="container" align="center">
                
-              <img src="img/myprofile.png" align="center" width="400" height="150">
+              <img src="img/mydog.png" align="center" width="400" height="150">
               <br> <br>
-        <div class="card" style="width: 25rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center">
+        <div class="card" style="width: 50rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center"><br> 
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
 
             
             
             
             
-            <!--     ========================= profile box ==============================       -->
- <br>    
-<form method="post" action="edit-profile.php">
-  <?php include('errors.php'); ?>   
-   
-    <p class="text-white"><b>That's your e-mail:</b> <?php echo $_SESSION['email']; ?>. It can't be changed. </p>
+            <!--     ========================= search box ==============================       -->
+    
 
-<div class="form-group md-form mr-3 ml-3 text-white"><br>
-    <input type="text" name="username" class="form-control" placeholder="username" value="<?php echo $username; ?>"/>
-    </div>
-<div class="form-group md-form mr-3 ml-3 text-white"><br>
-    <input type="text" name="city_id" class="form-control" placeholder="Edit city" value="<?php echo $city_id; ?>"/>
-    </div>
-<div class="form-group md-form mr-3 ml-3 text-white"><br>
-    <input type="text" name="region" class="form-control" placeholder="Edit region" value="<?php echo $region; ?>"/>
-    </div>
-<div class="form-group md-form mr-3 ml-3 text-white"><br>
-    <input type="submit" class="btn btn-light" name="update_user" value="Update User">
-  	</div>
-</form>
 
-      
+
+
+
+
+
+
+
+
+
+
+            
+            
             
             
             
             
             
 <!--      ======================================================================      -->
-           <br>   </div>        
+                  
+<br><br>        </div>        
       </div>
 
+   <br><br><br>   
       
-    <br><br>  
           
      <img src="img/grass-01.png" class="img-fluid" alt="Responsive image">
    
@@ -126,7 +117,7 @@ include('server.php')
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold">
-          <a href="terms.html" class="text-white">Terms of Use</a>
+          <a href="terms.php" class="text-white">Terms of Use</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -134,7 +125,7 @@ include('server.php')
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold">
-          <a href="about.html" class="text-white">About</a>
+          <a href="about.php" class="text-white">About</a>
         </h6>
       </div>
       <!-- Grid column -->

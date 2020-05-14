@@ -41,7 +41,6 @@ include('dbconnect.php')
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav"> 
-         <a class="nav-item nav-link" href="gallery.php">Gallery</a>
           <a class="nav-item nav-link" href="about.php">About</a>
           <a class="nav-item nav-link" href="profile.php">My Profile</a>
           <a class="nav-item nav-link" href="mydog.php">My Dog</a>
@@ -117,7 +116,7 @@ include('dbconnect.php')
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold">
-          <a href="terms.html" class="text-white">Terms of Use</a>
+          <a href="terms.php" class="text-white">Terms of Use</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -125,7 +124,7 @@ include('dbconnect.php')
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold">
-          <a href="about.html" class="text-white">About</a>
+          <a href="about.php" class="text-white">About</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -133,7 +132,7 @@ include('dbconnect.php')
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold text-light">
-          <a href="gallery.html"class="text-white">Gallery</a>
+          <a href="index.php"class="text-white">Home</a>
         </h6>
       </div>
       <!-- Grid column -->

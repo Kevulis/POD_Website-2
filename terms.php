@@ -29,7 +29,7 @@
     <title>Plenty of Dogs</title>
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
-  <a class="navbar-brand" href="index.html">
+  <a class="navbar-brand" href="index.php">
         <img src="img/POD_logo-02.png" width="100" height="100" class="d-inline-block align-top mr-5 ml-5" alt="Home"> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -37,8 +37,11 @@
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav"> 
-         <a class="nav-item nav-link" href="gallery.html">Gallery</a>
-          <a class="nav-item nav-link" href="about.html">About</a>
+          <a class="nav-item nav-link" href="about.php">About</a>
+          <a class="nav-item nav-link" href="profile.php">My Profile</a>
+          <a class="nav-item nav-link" href="mydog.php">My Dog</a>
+          <a class="nav-item nav-link" href="messages.php">Messages</a>
+          <a class="nav-item nav-link" href="search.php">Search Dogs</a>
   </div>
 
 </div>
@@ -204,7 +207,7 @@ As long as the website and the information and services on the website are provi
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold text-light">
-          <a href="gallery.php"class="text-white">Gallery</a>
+          <a href="index.php"class="text-white">Home</a>
         </h6>
       </div>
       <!-- Grid column -->
