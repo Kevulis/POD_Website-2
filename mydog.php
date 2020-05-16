@@ -69,63 +69,37 @@ include('server.php')
 
 
     
+
+<br> 
+      <div class="form-group md-form mr-3 ml-3 text-white">
+          <img class="rounded-circle" src="img/dog1-01.png" alt="Generic placeholder image" width="140" height="140">
+            </div>
+            
+            <div class="form-group md-form mr-3 ml-3 text-white">       
+            
+  <div class="row row-cols-2">
+    <div class="col text-white"><b>My dog: </b><?php echo $_SESSION['dog_name']; ?>  </div>
+    <div class="col text-white"><b>Gender: </b><?php echo $_SESSION['gender']; ?>  </div>
+    <div class="col text-white"><b>Breed: </b><?php echo $_SESSION['breed']; ?>  </div>
+    <div class="col text-white"><b>Size: </b><?php echo $_SESSION['size']; ?>  </div>
+    <div class="col text-white"><b>Age: </b><?php echo $_SESSION['age']; ?>  </div>
+    <div class="col text-white"><b>Height: </b><?php echo $_SESSION['height']; ?>  </div>
+    <div class="col text-white"><b>Weight: </b><?php echo $_SESSION['weight']; ?>  </div>
+    <div class="col text-white"><b>Energy Level: </b><?php echo $_SESSION['energy_level']; ?>  </div>
+    <div class="col text-white"><b>Behaviour: </b><?php echo $_SESSION['behaviour']; ?>  </div>
+                </div>
+           <br><br>       
+        <div class="row row-cols-2">
+        
+    <div class="col text-white"><b>Breeding Cycle: </b><?php echo $_SESSION['breeding']; ?>  </div>
+     <div class="col text-white"><b>Available To Meet: </b><?php echo $_SESSION['meeting']; ?>  </div>  
+  
+   
+  </div>
+   <br><br>         
 <div class="form-group">
     <a type="submit" class="btn btn-light" href="adddog.php" role="button">Add a new dog!</a>
 </div>
-<br> 
-<form action="" method="POST" enctype="multipart/form-data">
-  <table align="center">
-  <tr>
-        <td><label>Profile Image</label></td>
-        <td><label>:</label></td>
-        <td><label><input type="file" name="img" required/></label></td>
-  </tr> 
-  <tr>
-        <td><label></label></td>
-        <td><label></label></td>
-        <td><label><input type="submit" name="save_btn" value="Save"/></label></td>
-  </tr>
-  </table>           
-</form> 
-            
-<?php
-            if(isset($_POST['save_btn']))
-            {
-                if($con = mysqli_connect('localhost', 'root', 'root', 'POD'))
-                {
-                    $filetemp = $_FILES['img']['tmp_name'];
-                    $filename = $_FILES['img']['name'];
-                    $filetype = $_FILES['img']['type'];
-                    $filepath = "pics/".$filename;
-                    
-                    move_upload_file($filetemp, $filepath);
-                    $query = mysqli_query($con,"call imageInsert('$filename', '$filepath', '$filetype')");
-                    if (query)
-                    {
-                        echo "Image uploaded!";
-                    }
-                    else
-                    {
-                      echo "Upload failed!";  
-                    }
-                }
-            }
-?>
-
-                    
-            
-            
-<p class="text-white"><b>My dog: </b> <?php echo $_SESSION['dog_name']; ?> </p>
-<p class="text-white"><b>Gender:</b> <?php echo $_SESSION['gender']; ?> </p>
-<p class="text-white"><b>Breed:</b> <?php echo $_SESSION['breed']; ?> </p>
-<p class="text-white"><b>Size:</b> <?php echo $_SESSION['size']; ?> </p>
-<p class="text-white"><b>Age:</b> <?php echo $_SESSION['age_months']; ?><?php echo $_SESSION['age_years']; ?>  </p>
-<p class="text-white"><b>Height:</b> <?php echo $_SESSION['height']; ?> </p>
-<p class="text-white"><b>Weight:</b> <?php echo $_SESSION['weight']; ?>  </p>
-<p class="text-white"><b>Energy Level:</b> <?php echo $_SESSION['energy_level']; ?> </p>
-<p class="text-white"><b>Behaviour:</b> <?php echo $_SESSION['behaviour_id']; ?> </p>
-<p class="text-white"><b>Breeding cycle:</b> <?php echo $_SESSION['breeding']; ?> </p>
-<p class="text-white"><b>Available to meet:</b> <?php echo $_SESSION['meeting']; ?> </p>
 
 
 
@@ -137,7 +111,7 @@ include('server.php')
 
 
             
-            
+            </div>  
             
             
             

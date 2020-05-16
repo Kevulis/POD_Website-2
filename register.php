@@ -68,10 +68,10 @@
   	</div>
 <div class="form-group md-form mr-3 ml-3 text-white">
     <label class="text-muted text-white">Please choose an password with 6 or more characters</label>
-  	  <input type="password" class="form-control" name="password_1" minlenght="6" maxlength="12" pattern="(?=^.{8,}$)((?=.\d)|(?=.\W+))(?![.\n])(?=.[A-Z])(?=.[a-z]).*$" title="Password (UpperCase, LowerCase, Number/SpecialChar and min 6 Chars)" placeholder="Enter your password" value="<?php echo $password_1; ?>" required>
+  	  <input type="password" class="form-control" name="password_1" minlenght="6" maxlength="12" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Password (UpperCase, LowerCase, Number/SpecialChar and min 6 Chars)" placeholder="Enter your password" value="<?php echo $password_1; ?>" required>
   	</div>
 <div class="form-group md-form mr-3 ml-3 text-white">
-  	  <input type="password" class="form-control" name="password_2" minlenght="6" maxlength="12" pattern="(?=^.{8,}$)((?=.\d)|(?=.\W+))(?![.\n])(?=.[A-Z])(?=.[a-z]).*$" title="Please confirm your passoword!" placeholder="Re-enter your password" value="<?php echo $password_2; ?>" required>
+  	  <input type="password" class="form-control" name="password_2" minlenght="6" maxlength="12" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Please confirm your passoword!" placeholder="Re-enter your password" value="<?php echo $password_2; ?>" required>
   	</div>
           
           
@@ -91,8 +91,8 @@
   </div>            
           
  <div class="form-group form-row mr-3 ml-3">
-     <div class="col-md-6 mb-3">
- <select class="custom-select" required="" name= "city_id" value="<?php echo $city_id; ?>">
+     <div class="col-md-6 mb-3" >
+ <select required="required" class="form-control" name= "city_id" value="<?php echo $city_id; ?>">
                 <option>Select your city</option>
                 <?php
                     $query = "SELECT * from city";
@@ -113,7 +113,7 @@
                 </div>
 <div class="form-group mr-3 ml-3 text-white"><br>
 <input type="radio" id="terms" name="terms" value="agree" required>
-  <label for="agree"> I agree with the <a href="terms.html" class="text-white"> "Terms & Conditions".</a></label><br>
+  <label for="agree"> I have read and agreed with the <a href="terms.html" class="text-white"> "Terms & Conditions".</a></label><br>
      </div>
      
 <div class="form-group md-form mr-3 ml-3 text-white"><br>

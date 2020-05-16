@@ -7,8 +7,8 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-//$db = mysqli_connect('localhost', 'root', 'root', 'POD');
-$db = mysqli_connect('52.208.118.208:3306', 'admin', 'ljack123', 'POD');
+$db = mysqli_connect('localhost', 'root', 'root', 'POD');
+//$db = mysqli_connect('52.208.118.208:3306', 'admin', 'ljack123', 'POD');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -49,7 +49,7 @@ if (isset($_POST['reg_user'])) {
   			  VALUES('$email', '$password_1', '$security_question', '$security_answer', '$city_id', '$region', NOW())";
   	mysqli_query($db, $query);
   	$_SESSION['email'] = $email;
-  	$_SESSION['success'] = "You are now logged in";
+  	$_SESSION['success'] = "You are now logged in!";
   	header('location: index.php');
   }
 }

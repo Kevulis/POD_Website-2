@@ -70,19 +70,24 @@ include('server2.php')
 <form method="POST" action="mydog.php">
        
     <div class="form-group md-form mr-3 ml-3 text-white">
-    <input type="text" class="form-control" name="dog_name" placeholder="Dogs name" value="<?php echo $dog_name; ?>" > 
+    <input type="text" class="form-control" name="dog_name" placeholder="Dogs name" value="<?php echo $dog_name; ?>" required> 
     </div>
     <br>
     <div class="form-group form-row mr-3 ml-3">
-      <select class="custom-select" name="breed_id" value="<?php echo $breed_id; ?>">
-      <option value="">Select Breed</option>
-      <option value="Auau">Auau</option>
-      <option value="Golden">Golden</option>
-        </select>
-    </div>
+      <select class="custom-select" name="breed_id" required="" value="<?php echo $breed_id; ?>">
+       <option>Dog Behaviour</option>
+                <?php
+                    $query = "SELECT * from breed";
+                    $result_type = mysqli_query($db,$query);
+                    while ($row = mysqli_fetch_assoc($result_type)){ ?>
+                    <option value="<?php echo $row['breed_id']; ?>"><?php echo $row['breed_name'];?>
+                    </option> <?php
+                                                                  }
+                ?>
+                </select></div>
     <br>
     <div class="form-group form-row mr-3 ml-3">
-      <select class="custom-select" name="gender" value="<?php echo $gender; ?>">
+      <select class="custom-select" name="gender" value="<?php echo $gender; ?>" required>
       <option value="">Select Sex</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
@@ -90,7 +95,7 @@ include('server2.php')
     </div>
     <br>
     <div class="form-group form-row mr-3 ml-3">
-      <select class="custom-select" name="size" value="<?php echo $size; ?>">
+      <select class="custom-select" name="size" value="<?php echo $size; ?>" required>
       <option value="">Select Size</option>
       <option value="Small">Small</option>
       <option value="Medium">Medium</option>
@@ -102,11 +107,11 @@ include('server2.php')
     <br>
     <div class="form-group form-row mr-3 ml-3">
         <div class="col-md-6 mb-3 form-group">
-     <input type="text" class="form-control" name="age_months" placeholder="Age" value="<?php echo $age_months; ?>" > 
+     <input type="text" class="form-control" name="age_months" placeholder="Age" value="<?php echo $age_months; ?>" required> 
         </div>
     
     <div class="col-md-6 mb-3 form-group">
-     <select class="custom-select" name="age_years" value="<?php echo $age_years; ?>">
+     <select class="custom-select" name="age_years" value="<?php echo $age_years; ?>" required>
       <option value="Small">Months</option>
       <option value="Medium">Years</option>  
         </select></div></div>
@@ -114,49 +119,63 @@ include('server2.php')
         
       <div class="form-group form-row mr-3 ml-3">
         <div class="col-md-6 mb-3 form-group">
-    <input type="text" class="form-control" name="weight" placeholder="Weight in lb" value="<?php echo $weight; ?>" > 
+    <input type="text" class="form-control" name="weight" placeholder="Weight (kg)" value="<?php echo $weight; ?>" required> 
           </div>
          
      <div class="col-md-6 mb-3 form-group">
-    <input type="text" class="form-control" name="height" placeholder="Height in inch" value="<?php echo $height; ?>"  > 
+    <input type="text" class="form-control" name="height" placeholder="Height (inch)" value="<?php echo $height; ?>" required > 
           </div></div>
   <br>
     <div class="form-group form-row mr-3 ml-3">
         <div class="col-md-6 mb-3 form-group">
-     <select class="custom-select" name="behaviour" value="<?php echo $behaviour; ?>">
-      <option value="">Dog Behaviour</option>
-      <option value="Friendly">Friendly</option>
-      <option value="Happy">Happy</option> 
-            </select></div>
+     <select class="custom-select" name="behaviour" required="" value="<?php echo $behaviour; ?>" required>
+       <option>Dog Behaviour</option>
+                <?php
+                    $query = "SELECT * from behaviour";
+                    $result_type = mysqli_query($db,$query);
+                    while ($row = mysqli_fetch_assoc($result_type)){ ?>
+                    <option value="<?php echo $row['behaviour']; ?>"><?php echo $row['behaviour'];?>
+                    </option> <?php
+                                                                  }
+                ?>
+                </select></div>
     
      <div class="col-md-6 mb-3 form-group">
-     <select class="custom-select" name="energy_level" value="<?php echo $energy_level; ?>">
+     <select class="custom-select" name="energy_level" value="<?php echo $energy_level; ?>"required>
       <option value="">Dog Energy Level</option>
-      <option value="1">1</option>
-      <option value="5">5</option> 
+      <option value="1">1 - Low</option>
+      <option value="2">2 - Low</option>      
+      <option value="3">3 - Medium</option> 
+      <option value="4">4 - High</option>      
+      <option value="5">5 - High</option> 
         </select></div></div>
      <br>   
 
       <br>
     <div class="form-group form-row mr-3 ml-3">
         <div class="col-md-6 mb-3 form-group">
-     <select class="custom-select" name="breeding" value="<?php echo $breeding; ?>">
+     <select class="custom-select" name="breeding" value="<?php echo $breeding; ?>"required>
       <option value="">In Breeding Cycle?</option>
       <option value="Yes">Yes</option>
       <option value="No">No</option> 
             </select></div>
     
      <div class="col-md-6 mb-3 form-group">
-     <select class="custom-select" name="meeting" value="<?php echo $meeting; ?>">
+     <select class="custom-select" name="meeting" value="<?php echo $meeting; ?>"required>
       <option value="">Available to Meet?</option>
       <option value="Yes">Yes</option>
       <option value="No">No</option> 
         </select></div></div>
      <br> 
-        <div class="form-group md-form mr-3 ml-3 text-white">
-    <input type="text" class="form-control" name="desc" placeholder="Descrição" value="<?php echo $desc; ?>" > 
+    <div class="form-group form-row mr-3 ml-3">
+            <textarea class="form-control" name="desc" rows="5" cols="50" placeholder="Dog description" value="<?php echo $desc; ?>"required > My dog is... </textarea>
+           
     </div>
-    
+<div class="form-group md-form mr-3 ml-3 text-white" required>
+    <label class="form-group text-white" ><strong>Upload Profile Picture <br> <small>(*.jpg, .png | max 1MB)</small></strong></label>
+        <input type="file"  name="img" required/>
+</div>
+  
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
     <input type="submit" class="btn btn-light" name="reg_dog" value="Register Dog">
   	</div>

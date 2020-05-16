@@ -1,20 +1,20 @@
 <?php
 session_start(); 
 
-include('dbconnect.php');
-//
-//$gender = '';
-//$query = "SELECT DISTINCT gender FROM dog ORDER BY Country ASC";
-//$statement = $connect->prepare($query);
-//$statement->execute();
-//$result = $statement->fetchAll();
-//foreach($result as $row)
-//{
-// $gender .= '<option value="'.$row['gender'].'">'.$row['gender'].'</option>';
-//}
+  if (!isset($_SESSION['email'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['email']);
+  	header("location: login.php");
+  }
 
-
+include('dbconnect.php')
 ?>
+
+
 
 <!--
 ---------------------------- html --------------------------------
@@ -60,7 +60,7 @@ include('dbconnect.php');
                
               <img src="img/mydog.png" align="center" width="400" height="150">
               <br> <br>
-        <div class="card" style="width: 50rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center"><br> 
+        <div class="card" style="width: 60rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center"><br> 
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
 
             
@@ -69,77 +69,103 @@ include('dbconnect.php');
             
             <!--     ========================= search box ==============================       -->
     
-
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-     <div class="form-group">
-      <select name="filter_breed" id="filter_breed" class="form-control" required>
-       <option value="">Select Breed</option>
-       <option value="185">Golden</option>
-       <option value="1">Outro</option>
-      </select>
-     </div>
-     <div class="form-group">
-      <select name="filter_gender" id="filter_gender" class="form-control" required>
-       <option value="">Select gender</option>
-       <option value="Male">Male</option>
+<br>
+    
+   <div class="row form-group md-form mr-3 ml-3 ">
+    <div class="col-sm form-group">
+      <select name="filter_breed" id="filter_breed" class="form-control" value="<?php echo $breed_id; ?>" required>
+       <option>Select Breed</option>
+                <?php
+                    $query = "SELECT * from breed";
+                    $result_type = mysqli_query($db,$query);
+                    while ($row = mysqli_fetch_assoc($result_type)){ ?>
+                    <option value="<?php echo $row['breed_id']; ?>"><?php echo $row['breed_name'];?>
+                    </option> <?php
+                                                                  }
+                ?>
+                </select>    </div>
+    
+    <div class="col-sm form-group">
+      <select name="filter_size" class="form-control" value="<?php echo $size; ?>" required>
+       <option value="">Select Size</option>
+       <option value="S">Small</option>
+       <option value="M">Medium</option>
+       <option value="L">Large</option>   
+       <option value="XL">Extra-Large</option>
+      </select>    </div>
+       
+    <div class="col-sm form-group">
+      <select name="filter_city" class="form-control" value="<?php echo $city_id; ?>">
+                <option>Select a city</option>
+                <?php
+                    $query = "SELECT * from city";
+                    $result_type = mysqli_query($db,$query);
+                    while ($row = mysqli_fetch_assoc($result_type)){ ?>
+                    <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city'];?>
+                    </option> <?php
+                                                                  }
+                ?></select>    </div> </div>
+      
+       <div class="row form-group md-form mr-3 ml-3 ">
+        <div class="col-sm form-group">
+      <select name="filter_gender" class="form-control" value="<?php echo $gender; ?>" required>
+       <option value="">Select Gender</option>
        <option value="Female">Female</option>
-      </select>
-     </div><div class="form-group">
-      <select name="filter_size" id="filter_size" class="form-control" required>
-       <option value="">Select size</option>
-       <option value="s">small</option>
-       <option value="l">large</option>
-      </select>
-     </div> 
-             <div class="form-group">
-      <select name="filter_meeting" id="filter_meeting" class="form-control" required>
-       <option value="">Available meet</option>
-       <option value="YES">Yes</option>
-       <option value="NO">No</option>
-      </select>
-     </div>
-                    <div class="form-group">
-      <select name="filter_breeding" id="filter_breeding" class="form-control" required>
-       <option value="">Available Breed</option>
-       <option value="YES">Yes</option>
-       <option value="NO">No</option>
-      </select>
-     </div>
+       <option value="Male">Male</option>
+      </select>    </div>
+       
+           <div class="col-sm form-group">
+      <select name="filter_breeding" class="form-control" value="<?php echo $breeding; ?>" required>
+       <option value="">Breeding Cycle</option>
+       <option value="Yes">Yes</option>
+       <option value="No">No</option>
+      </select>    </div>
+       
+               <div class="col-sm form-group">
+      <select name="filter_meeting" class="form-control" value="<?php echo $meeting; ?>" required>
+       <option value="">Available to Meet</option>
+       <option value="Yes">Yes</option>
+       <option value="No">No</option>
+      </select>    </div>
+
+ </div>
      <div class="form-group" align="center">
-      <button type="button" name="filter" id="filter" class="btn btn-info">Filter</button>
-     </div>
-    </div>
-    <div class="col-md-4"></div>
-   </div>
-   <div class="table-responsive">
-    <table id="customer_data" class="table table-bordered table-striped">
-     <thead>
-      <tr>
-       <th width="20%">Dog Name</th>
-       <th width="10%">Gender</th>
-       <th width="25%">Breed</th>
-       <th width="15%">City</th>
-       <th width="15%">Size</th>
-       <th width="15%">Height</th>
-        <th width="15%">Energy Level</th>
-        <th width="15%">Available to Meet</th>
-        <th width="15%">Breeding Cycle</th>
-          
-      </tr>
-     </thead>
-    </table>
-    <br />
-    <br />
-    <br />
+      <button type="button" name="filter"  class="btn btn-light">Search</button>
+  
+
    </div>
 
+
+          <br><br>  
+        <div class="row form-group md-form mr-3 ml-3 text-white">       
+    <div class="col-sm form-group">      
+
+      <div class="form-group md-form mr-3 ml-3 text-white">
+          <img class="rounded-circle" src="img/dog1-01.png" alt="Generic placeholder image" width="140" height="140">
+            </div>
+    <div class="col text-white"><b>My dog: </b><?php echo $_SESSION['dog_name']; ?>  </div>
+            </div>
             
+    <div class="row row-cols-2 form-group md-form mr-3 ml-3 text-white">       
+    <div class="col-sm form-group">          
+    <div class="col text-white"><b>Gender: </b><?php echo $_SESSION['gender']; ?>  </div>
+    <div class="col text-white"><b>Breed: </b><?php echo $_SESSION['breed']; ?>  </div>
+    <div class="col text-white"><b>Size: </b><?php echo $_SESSION['size']; ?>  </div>
+    <div class="col text-white"><b>Age: </b><?php echo $_SESSION['age']; ?>  </div>
+    <div class="col text-white"><b>Height: </b><?php echo $_SESSION['height']; ?>  </div>
+        </div>
+        
+         <div class="row row-cols-2 form-group md-form mr-3 ml-3 text-white">       
+    <div class="col-sm form-group">    
+    <div class="col text-white"><b>Weight: </b><?php echo $_SESSION['weight']; ?>  </div>
+    <div class="col text-white"><b>Energy Level: </b><?php echo $_SESSION['energy_level']; ?>  </div>
+    <div class="col text-white"><b>Behaviour: </b><?php echo $_SESSION['behaviour']; ?>  </div>  
+    <div class="col text-white"><b>Breeding Cycle: </b><?php echo $_SESSION['breeding']; ?>  </div>
+     <div class="col text-white"><b>Available To Meet: </b><?php echo $_SESSION['meeting']; ?>  </div>  
             
-            
-            
-            
+        </div>
+                </div>
+            </div></div> 
             
             
 <!--      ======================================================================      -->
@@ -236,51 +262,4 @@ include('dbconnect.php');
 <!-- Footer -->
  
 </html>
-
-<script type="text/javascript" language="javascript" >
- $(document).ready(function(){
-  
-  fill_datatable();
-  
-  function fill_datatable(filter_gender = '', filter_city = '', filter_breed = '', filter_size = '', filter_meeting = '', filter_breeding = '')
-  {
-   var dataTable = $('#customer_data').DataTable({
-    "processing" : true,
-    "serverSide" : true,
-    "order" : [],
-    "searching" : false,
-    "ajax" : {
-     url:"fetch.php",
-     type:"POST",
-     data:{
-      filter_gender:filter_gender, filter_city:filter_city, filter_breed:filter_breed, filter_size:filter_size, filter_meeting:filter_meeting, filter_breeding:filter_breeding
-     }
-    }
-   });
-  }
-  
-  $('#filter').click(function(){
-   var filter_gender = $('#filter_gender').val();
-   var filter_city = $('#filter_city').val();
-    var filter_breed = $('#filter_breed').val();
-    var filter_size = $('#filter_size').val();
-    var filter_meeting = $('#filter_meeting').val();
-    var filter_breeding = $('#filter_breeding').val();
-   if(filter_gender != '' && filter_city != '' && filter_breed != '' && filter_size != '' && filter_meeting != '' && filter_breeding != '')
-   {
-    $('#customer_data').DataTable().destroy();
-    fill_datatable(filter_gender, filter_city, filter_breed, filter_size, filter_meeting, filter_breeding);
-   }
-   else
-   {
-    alert('Select Both filter option');
-    $('#customer_data').DataTable().destroy();
-    fill_datatable();
-   }
-  });
-  
-  
- });
- 
-</script>
 

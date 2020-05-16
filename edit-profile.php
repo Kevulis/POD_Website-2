@@ -72,19 +72,32 @@ include('server.php')
 <form method="post" action="edit-profile.php">
   <?php include('errors.php'); ?>   
    
-    <p class="text-white"><b>That's your e-mail:</b> <?php echo $_SESSION['email']; ?>. It can't be changed. </p>
+    <p class="text-white"><b>That's your e-mail:</b> <?php echo $_SESSION['email']; ?>. <br><small>It can't be changed.</small> </p>
 
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
-    <input type="text" name="username" class="form-control" placeholder="username" value="<?php echo $username; ?>"/>
+    <input type="text" name="username" class="form-control" placeholder="Add/Edit username" value="<?php echo $username; ?>"/>
     </div>
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
-    <input type="text" name="city_id" class="form-control" placeholder="Edit city" value="<?php echo $city_id; ?>"/>
-    </div>
+
+ <select class="custom-select form-control" required="" placeholder="Edit city" name= "city_id" value="<?php echo $city_id; ?>">
+                <option>Select your city</option>
+                <?php
+                    $query = "SELECT * from city";
+                    $result_type = mysqli_query($db,$query);
+                    while ($row = mysqli_fetch_assoc($result_type)){ ?>
+                    <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city'];?>
+                    </option> <?php
+                                                                  }
+                ?>
+                </select>
+         </div> 
+    
+    
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
     <input type="text" name="region" class="form-control" placeholder="Edit region" value="<?php echo $region; ?>"/>
     </div>
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
-    <input type="submit" class="btn btn-light" name="update_user" value="Update User">
+    <input type="submit" class="btn btn-light" name="update_user" value="Save Changes">
   	</div>
 </form>
 

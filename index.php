@@ -152,7 +152,7 @@
           <div class="col-md-7">
               <br>
               <br>
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+            <h2 class="featurette-heading">Does your furry friend <span class="text-muted">seem to be lonely lately?</span></h2>
             <p class="lead">They say there is no feeling purer than love, some passionate wait anxiously for the moment when they will find their soul mate and it is not just us humans who deserve an ear blanket. Our dogs also have feelings, why not help them find their other half of the bone?</p>
           </div>
           <div class="col-md-5">
