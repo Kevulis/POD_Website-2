@@ -28,7 +28,6 @@
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav"> 
-         <a class="nav-item nav-link" href="gallery.html">Gallery</a>
           <a class="nav-item nav-link" href="about.html">About</a>
   </div>
 
@@ -75,9 +74,7 @@
   	<div class="form-group">
         <input type="submit" class="btn btn-light" name="login_user" value="Login">
   	</div>
-  	<p class="text-white">
-  		Not yet a member? <a href="register.php">Sign up</a>
-  	</p>
+
         
   </form>      
             <br>
@@ -132,7 +129,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="font-weight-bold text-light">
-          <a href="gallery.html"class="text-white">Gallery</a>
+          <a href="index.html"class="text-white">Home</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -167,7 +164,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> POD - Plenty of Dogs</a>
+    <a > POD - Plenty of Dogs</a>
   </div>
   <!-- Copyright -->
 

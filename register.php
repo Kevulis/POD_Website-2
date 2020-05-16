@@ -64,13 +64,14 @@
         <?php include('errors.php'); ?>     
     <br>
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
-  	  <input type="email" class="form-control" name="email" placeholder="Enter your e-mail" value="<?php echo $email; ?>" required>
+  	  <input type="email" class="form-control" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter your e-mail" value="<?php echo $email; ?>" required>
   	</div>
 <div class="form-group md-form mr-3 ml-3 text-white">
-  	  <input type="password" class="form-control" name="password_1" placeholder="Enter your password" value="<?php echo $password_1; ?>" required>
+    <label class="text-muted text-white">Please choose an password with 6 or more characters</label>
+  	  <input type="password" class="form-control" name="password_1" minlenght="6" maxlength="12" pattern="(?=^.{8,}$)((?=.\d)|(?=.\W+))(?![.\n])(?=.[A-Z])(?=.[a-z]).*$" title="Password (UpperCase, LowerCase, Number/SpecialChar and min 6 Chars)" placeholder="Enter your password" value="<?php echo $password_1; ?>" required>
   	</div>
 <div class="form-group md-form mr-3 ml-3 text-white">
-  	  <input type="password" class="form-control" name="password_2" placeholder="Re-enter your password" value="<?php echo $password_2; ?>" required>
+  	  <input type="password" class="form-control" name="password_2" minlenght="6" maxlength="12" pattern="(?=^.{8,}$)((?=.\d)|(?=.\W+))(?![.\n])(?=.[A-Z])(?=.[a-z]).*$" title="Please confirm your passoword!" placeholder="Re-enter your password" value="<?php echo $password_2; ?>" required>
   	</div>
           
           
@@ -91,21 +92,30 @@
           
  <div class="form-group form-row mr-3 ml-3">
      <div class="col-md-6 mb-3">
-      <select class="custom-select" name="city_id" value="<?php echo $city_id; ?>" >
-      <option value="">Select your city</option>
-      <option value="1">Dublin</option>
-      <option value="2">Cork</option>
-      <option value="3">Limerick</option>
-      <option value="4">Galway</option>
-      <option value="5">Waterford</option>
-         </select>
-         </div>         
+ <select class="custom-select" required="" name= "city_id" value="<?php echo $city_id; ?>">
+                <option>Select your city</option>
+                <?php
+                    $query = "SELECT * from city";
+                    $result_type = mysqli_query($db,$query);
+                    while ($row = mysqli_fetch_assoc($result_type)){ ?>
+                    <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city'];?>
+                    </option> <?php
+                                                                  }
+                ?>
+                </select>
+         </div>  
+    
+           
    
 <div class="col-md-6 mb-3 form-group">
                     <input  class="form-control" name="region"  value="<?php echo $region; ?>" placeholder="Region (Optional)">  
             <br><br>
                 </div>
-         
+<div class="form-group mr-3 ml-3 text-white"><br>
+<input type="radio" id="terms" name="terms" value="agree" required>
+  <label for="agree"> I agree with the <a href="terms.html" class="text-white"> "Terms & Conditions".</a></label><br>
+     </div>
+     
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
     <input type="submit" class="btn btn-light" name="reg_user" value="Register">
   	</div>
@@ -198,7 +208,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> POD - Plenty of Dogs</a>
+    <a > POD - Plenty of Dogs</a>
   </div>
   <!-- Copyright -->
 

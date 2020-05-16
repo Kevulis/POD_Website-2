@@ -242,7 +242,7 @@ As long as the website and the information and services on the website are provi
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> POD - Plenty of Dogs</a>
+    <a > POD - Plenty of Dogs</a>
   </div>
   <!-- Copyright -->
 

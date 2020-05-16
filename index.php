@@ -118,24 +118,27 @@
       
       <div class="container" align="center">
 
-        <!-- Three columns of text below the carousel -->
+          <!-- Three columns of text below the carousel -->
         <div class="row">
           <div class="col-lg-4">
             <img class="rounded-circle" src="img/dog1-01.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>Step 1</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+              <h3><span class="text-muted">Step 1</span></h3>
+              <h2>Create a Profile</h2>
+            <p>The very first step is to fill out the owner personal information to become a member.</p>
             
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="img/dog2-01.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>Step 2</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <h3><span class="text-muted">Step 2</span></h3>
+              <h2>Create a Dog Profile</h2>
+            <p>Fill out the dog's personal information, upload photos to create a perfect album, register your lovely doggie.</p>
             
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="img/dog3-01.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>Step 3</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              <h3><span class="text-muted">Step 3</span></h3>
+                            <h2>Have a sniff around, message and meet up!</h2>
+            <p>Based on your profile, we’ll show you a list of dogs that best match your requirements. We recommend members get to know each other very well before arranging a meeting.</p>
             
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
@@ -150,7 +153,7 @@
               <br>
               <br>
             <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <p class="lead">They say there is no feeling purer than love, some passionate wait anxiously for the moment when they will find their soul mate and it is not just us humans who deserve an ear blanket. Our dogs also have feelings, why not help them find their other half of the bone?</p>
           </div>
           <div class="col-md-5">
             <img class="img-fluid" src="img/couple-01.png" width="300" height="300">
@@ -235,7 +238,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> POD - Plenty of Dogs</a>
+    <a > POD - Plenty of Dogs</a>
   </div>
   <!-- Copyright -->
 

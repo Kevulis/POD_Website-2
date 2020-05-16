@@ -7,8 +7,8 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', 'root', 'POD');
-//$db = mysqli_connect('52.208.118.208:3306', 'admin', 'ljack123', 'POD');
+//$db = mysqli_connect('localhost', 'root', 'root', 'POD');
+$db = mysqli_connect('52.208.118.208:3306', 'admin', 'ljack123', 'POD');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
