@@ -9,7 +9,7 @@ session_start();
   	unset($_SESSION['email']);
   	header("location: login.php");
   }
-include('server2.php')
+include('server.php')
 ?>
 
 <!--
@@ -67,15 +67,23 @@ include('server2.php')
  <br>    
 
 
-<form method="POST" action="mydog.php">
-       
+<form method="POST" action="adddog.php">
+    <?php include('errors.php'); ?>
+    
+    <div class="form-group md-form mr-3 ml-3 text-white"><br>
+    <p class="text-white"><b>Owner e-mail:</b></p>
+    <input type="text" name="email" class="form-control" placeholder="<?php echo $_SESSION['email']; ?>" value="<?php echo $_SESSION['email']; ?>" disabled/> 
+    <p><small>It can't be changed.</small> </p>
+    </div>
+    
     <div class="form-group md-form mr-3 ml-3 text-white">
     <input type="text" class="form-control" name="dog_name" placeholder="Dogs name" value="<?php echo $dog_name; ?>" required> 
     </div>
     <br>
+    
     <div class="form-group form-row mr-3 ml-3">
       <select class="custom-select" name="breed_id" required="" value="<?php echo $breed_id; ?>">
-       <option>Dog Behaviour</option>
+       <option>Dog Breed</option>
                 <?php
                     $query = "SELECT * from breed";
                     $result_type = mysqli_query($db,$query);
@@ -89,18 +97,18 @@ include('server2.php')
     <div class="form-group form-row mr-3 ml-3">
       <select class="custom-select" name="gender" value="<?php echo $gender; ?>" required>
       <option value="">Select Sex</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
         </select>
     </div>
     <br>
     <div class="form-group form-row mr-3 ml-3">
       <select class="custom-select" name="size" value="<?php echo $size; ?>" required>
       <option value="">Select Size</option>
-      <option value="Small">Small</option>
-      <option value="Medium">Medium</option>
-      <option value="Large">Large</option>
-      <option value="Extra Large">Extra Large</option>
+      <option value="S">Small</option>
+      <option value="M">Medium</option>
+      <option value="L">Large</option>
+      <option value="XL">Extra Large</option>
         </select>
     </div>
 
@@ -156,25 +164,27 @@ include('server2.php')
         <div class="col-md-6 mb-3 form-group">
      <select class="custom-select" name="breeding" value="<?php echo $breeding; ?>"required>
       <option value="">In Breeding Cycle?</option>
-      <option value="Yes">Yes</option>
-      <option value="No">No</option> 
+      <option value="1">Yes</option>
+      <option value="0">No</option> 
             </select></div>
     
      <div class="col-md-6 mb-3 form-group">
      <select class="custom-select" name="meeting" value="<?php echo $meeting; ?>"required>
       <option value="">Available to Meet?</option>
-      <option value="Yes">Yes</option>
-      <option value="No">No</option> 
+      <option value="1">Yes</option>
+      <option value="0">No</option> 
         </select></div></div>
      <br> 
     <div class="form-group form-row mr-3 ml-3">
             <textarea class="form-control" name="desc" rows="5" cols="50" placeholder="Dog description" value="<?php echo $desc; ?>"required > My dog is... </textarea>
            
     </div>
+<!--
 <div class="form-group md-form mr-3 ml-3 text-white" required>
     <label class="form-group text-white" ><strong>Upload Profile Picture <br> <small>(*.jpg, .png | max 1MB)</small></strong></label>
         <input type="file"  name="img" required/>
 </div>
+-->
   
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
     <input type="submit" class="btn btn-light" name="reg_dog" value="Register Dog">

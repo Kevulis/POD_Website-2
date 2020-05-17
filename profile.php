@@ -11,7 +11,16 @@ session_start();
   	header("location: login.php");
   }
 
-include('dbconnect.php')
+include('dbconnect.php');
+
+    if(isset($_GET['delete_user'])){
+        $delete_user=$_GET['delete_user'];
+        
+        $query= "DELETE FROM owner WHERE email='$delete_user'";
+        mysqli_query($db, $query);
+        header("location: index.html");
+    }
+    
 ?>
 
 <!--
@@ -77,8 +86,12 @@ include('dbconnect.php')
 <div class="form-group">
     <a type="submit" class="btn btn-light" href="edit-profile.php" role="button">Edit Profile</a>
 </div>
+
+<div class="form-group">
+    <a type="submit" class="btn btn-light" href="profile.php?delete_user=<?php echo $_SESSION['email']; ?>" onClick="return confirm ('Are you sure you want to delete your profile?');">Delete</a>
+</div>
         
-         
+
             
             
             

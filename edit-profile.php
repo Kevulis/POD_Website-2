@@ -72,10 +72,14 @@ include('server.php')
 <form method="post" action="edit-profile.php">
   <?php include('errors.php'); ?>   
    
-    <p class="text-white"><b>That's your e-mail:</b> <?php echo $_SESSION['email']; ?>. <br><small>It can't be changed.</small> </p>
+    <div class="form-group md-form mr-3 ml-3 text-white"><br>
+    <p class="text-white"><b>That's your e-mail:</b></p>
+    <input type="text" name="email" class="form-control" placeholder="<?php echo $_SESSION['email']; ?>" value="<?php echo $_SESSION['email']; ?>" disabled/> 
+    <p><small>It can't be changed.</small> </p>
+    </div>
 
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
-    <input type="text" name="username" class="form-control" placeholder="Add/Edit username" value="<?php echo $username; ?>"/>
+    <input type="text" name="username" class="form-control" placeholder="Add/Edit username" value="<?php echo $username; ?>" required/>
     </div>
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
 

@@ -65,11 +65,20 @@ include('server.php')
             
             <!--     ========================= profile box ==============================       -->
  <br>    
+  
+<!-- notification message -->
+  	<?php if (isset($_SESSION['dogadded'])) : ?>
+      <div class="error success" >
+      	<h3>
+          <?php 
+          	echo $_SESSION['dogadded']; 
+          	unset($_SESSION['dogadded']);
+          ?>
+      	</h3>
+      </div>
+  	<?php endif ?>
 
-
-
-    
-
+    <!-- logged in user information -->
 <br> 
       <div class="form-group md-form mr-3 ml-3 text-white">
           <img class="rounded-circle" src="img/dog1-01.png" alt="Generic placeholder image" width="140" height="140">
