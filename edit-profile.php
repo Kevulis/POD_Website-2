@@ -58,7 +58,7 @@ include('server.php')
  
           <div class="container" align="center">
                
-              <img src="img/myprofile.png" align="center" width="400" height="150">
+              <img src="img/editprofile.png" align="center" width="400" height="150">
               <br> <br>
         <div class="card" style="width: 25rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center">
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
