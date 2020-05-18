@@ -126,10 +126,12 @@ if (count($errors) == 0) {
 }
 //REG DOGUINHO
 if (isset($_POST['reg_dog'])) {
+	 
   // receive all input values from the form dog
-  $email = mysqli_real_escape_string($db, $_POST['email']);
-  $dog_name = mysqli_real_escape_string($db, $_POST['dog_name']);
-  $breed_id = mysqli_real_escape_string($db, $_POST['breed_id']);
+  $dog_name = mysqli_real_escape_string($db,$_POST['dog_name']);
+ $dog_id=0;
+  $breed_id = mysqli_real_escape_string($db,$_POST['breed_id']);
+
   $gender = mysqli_real_escape_string($db, $_POST['gender']);
   $size = mysqli_real_escape_string($db, $_POST['size']);
   $age_months = mysqli_real_escape_string($db, $_POST['age_months']);
@@ -141,20 +143,38 @@ if (isset($_POST['reg_dog'])) {
   $desc = mysqli_real_escape_string($db, $_POST['desc']);
   $breeding = mysqli_real_escape_string($db, $_POST['breeding']);
   $meeting = mysqli_real_escape_string($db , $_POST['meeting']);
-
-
-
+$email=$_SESSION['email'];
+ 
+ 
+ $query2 = "SELECT * FROM dog where owner_email='$email'";
+  	$results2 = mysqli_query($db, $query2);
+  	if (mysqli_num_rows($results2) == 1) {
+     	$_SESSION['dogadded'] = "Dog Already exist!";
+  	header('location: mydog.php');
+    }
+ else
+ {
+	$query1 = "SELECT max(dog_id) FROM dog";
+  	$results = mysqli_query($db, $query1);
+  	if (mysqli_num_rows($results) == 1) {
+        while ($row=mysqli_fetch_row($results))
+    {
+		
+     $dog_id = $row[0]+1;
+	}
+    }
+	
  if (count($errors) == 0) {
-     
-     $query = "INSERT INTO dog (owner_email, dog_name, gender, breed_id, size, age_months, age_years, height, weight, energy_level, behaviour_id, is_breeding_cycle, is_avaliable_meeting, description, create_time) 
-  			  VALUES('$email', '$dog_name', '$gender', '$breed_id', '$size', '$age_months', '$age_years', '$height', '$weight', $energy_level', '$behaviour', '$breeding', '$meeting', '$desc', current_timestamp)";
-  	mysqli_query($db, $query);
-  	$_SESSION['email'] = $email;
-  	$_SESSION['dogadded'] = "Dog added!";
+	$query ="insert into dog values('$email','$dog_id','$dog_name','$gender','$breed_id','$size','$age_months', '$age_months','$height', '$weight', '$energy_level', '$behaviour', '$breeding', '$meeting', '$desc',now(),now());";
+ 
+  //	$query = "INSERT INTO dog SET dog_name='$dog_name', gender='$gender', breed_id='$breed_id', size='$size', age_months='$age_months', age_years='$age_years', height='$height', weight='$weight', energy_level='$energy_level', behaviour_id='$behaviour', is_breeding_cycle='$breeding', is_avaliable_meeting='$meeting', description='$desc', create_time= NOW()";
+    // $query = "INSERT INTO dog values('$dog_name', '$gender','$breed_id', '$size','$age_months', '$age_years', '$height', '$weight', '$energy_level', '$behaviour', '$breeding', '$meeting', '$desc', create_time= NOW())";
+     	mysqli_query($db, $query);
+  	//$_SESSION['email'] = $row[0];
+  	$_SESSION['dogadded'] = "Dod added!";
   	header('location: mydog.php');
   }
-    
-
+ }
 }
 
 ?>

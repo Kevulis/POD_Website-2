@@ -142,7 +142,7 @@ include('server.php')
                     $query = "SELECT * from behaviour";
                     $result_type = mysqli_query($db,$query);
                     while ($row = mysqli_fetch_assoc($result_type)){ ?>
-                    <option value="<?php echo $row['behaviour']; ?>"><?php echo $row['behaviour'];?>
+                    <option value="<?php echo $row['behaviour_id']; ?>"><?php echo $row['behaviour'];?>
                     </option> <?php
                                                                   }
                 ?>

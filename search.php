@@ -31,8 +31,115 @@ include('dbconnect.php')
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <title>Search | Plenty of Dogs</title>
+	<style>
+	.form-panel:not(.active) {
+    display:none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+  width: 50px;
+  margin-top:150px;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+  width:50px;
+  margin-top:150px;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+
+	</style>
+	 <script language = "javascript" type = "text/javascript">
+	 $(document).ready(function(){
+	 $('.previous').click(function () {
+    var cur = $('.form-panel').index($('.form-panel.active'));
+    if (cur!=0) {
+        $('.form-panel').removeClass('active');
+        $('.form-panel').eq(cur-1).addClass('active');
+    }
+});
+$('.next').click(function () {
+    var cur = $('.form-panel').index($('.form-panel.active'));
+    if (cur!=$('.form-panel').length-1) {
+        $('.form-panel').removeClass('active');
+        $('.form-panel').eq(cur+1).addClass('active');
+    }
+});
+});
+         <!--
+            //Browser Support Code
+            function ajaxFunction(){
+               var ajaxRequest;  // The variable that makes Ajax possible!
+               
+               try {
+                  // Opera 8.0+, Firefox, Safari
+                  ajaxRequest = new XMLHttpRequest();
+               }catch (e) {
+                  // Internet Explorer Browsers
+                  try {
+                     ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                  }catch (e) {
+                     try{
+                        ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                     }catch (e){
+                        // Something went wrong
+                        alert("Your browser broke!");
+                        return false;
+                     }
+                  }
+               }
+               
+               // Create a function that will receive data 
+               // sent from the server and will update
+               // div section in the same page.
+					
+               ajaxRequest.onreadystatechange = function(){
+                  if(ajaxRequest.readyState == 4){
+                     var ajaxDisplay = document.getElementById('ajaxDiv');
+                     ajaxDisplay.innerHTML = ajaxRequest.responseText;
+                  }
+               }
+               
+               // Now get the value from user and pass it to
+               // server script.
+					
+               var breed = document.getElementById('filter_breed').value;
+               var city = document.getElementById('filter_city').value;
+               var size = document.getElementById('filter_size').value;
+			   var gender = document.getElementById('filter_gender').value;
+			   var breeding = document.getElementById('filter_breeding').value;
+			   var meeting = document.getElementById('filter_meeting').value;
+               var queryString = "?breed=" + breed ;
+            
+               queryString +=  "&city=" + city + "&size=" + size+ "&gender=" + gender+ "&breeding=" + breeding+ "&meeting=" + meeting;
+               ajaxRequest.open("GET", "searchdata.php" + queryString, true);
+               ajaxRequest.send(null); 
+            }
+         //-->
+      </script>
+	
+	
 <!------ Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-info" style="background-image: url('img/bk-01.png'); background-size: cover;">
   <a class="navbar-brand" href="index.php">
@@ -58,7 +165,7 @@ include('dbconnect.php')
  
           <div class="container" align="center">
                
-              <img src="img/search.png" align="center" width="400" height="150">
+              <img src="img/mydog.png" align="center" width="400" height="150">
               <br> <br>
         <div class="card" style="width: 60rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center"><br> 
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
@@ -70,11 +177,11 @@ include('dbconnect.php')
             <!--     ========================= search box ==============================       -->
     
 <br>
-    
-   <div class="row form-group md-form mr-3 ml-3 ">
+<form method="post" action="login.php">
+<div class="row form-group md-form mr-3 ml-3 ">
     <div class="col-sm form-group">
       <select name="filter_breed" id="filter_breed" class="form-control" value="<?php echo $breed_id; ?>" required>
-       <option>Select Breed</option>
+       <option value="">Select Breed</option>
                 <?php
                     $query = "SELECT * from breed";
                     $result_type = mysqli_query($db,$query);
@@ -86,7 +193,7 @@ include('dbconnect.php')
                 </select>    </div>
     
     <div class="col-sm form-group">
-      <select name="filter_size" class="form-control" value="<?php echo $size; ?>" required>
+      <select name="filter_size" class="form-control" id="filter_size" value="<?php echo $size; ?>" required>
        <option value="">Select Size</option>
        <option value="S">Small</option>
        <option value="M">Medium</option>
@@ -95,7 +202,72 @@ include('dbconnect.php')
       </select>    </div>
        
     <div class="col-sm form-group">
-      <select name="filter_city" class="form-control" value="<?php echo $city_id; ?>">
+      <select name="filter_city" class="form-control" id="filter_city" value="<?php echo $city_id; ?>">
+                <option value="">Select a city</option>
+                <?php
+                    $query = "SELECT * from city";
+                    $result_type = mysqli_query($db,$query);
+                    while ($row = mysqli_fetch_assoc($result_type)){ ?>
+                    <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city'];?>
+                    </option> <?php
+                                                                  }
+                ?></select>    </div> </div>
+      
+       <div class="row form-group md-form mr-3 ml-3 ">
+        <div class="col-sm form-group">
+      <select name="filter_gender" class="form-control" id="filter_gender" value="<?php echo $gender; ?>" required>
+       <option value="">Select Gender</option>
+       <option value="F">Female</option>
+       <option value="M">Male</option>
+      </select>    </div>
+       
+           <div class="col-sm form-group">
+      <select name="filter_breeding" class="form-control" id="filter_breeding" value="<?php echo $breeding; ?>" required>
+       <option value="">Breeding Cycle</option>
+       <option value="1">Yes</option>
+       <option value="0">No</option>
+      </select>    </div>
+       
+               <div class="col-sm form-group">
+      <select name="filter_meeting" class="form-control" id="filter_meeting" value="<?php echo $meeting; ?>" required>
+       <option value="">Available to Meet</option>
+       <option value="1">Yes</option>
+       <option value="0">No</option>
+      </select>    </div>
+
+ </div>
+     <div class="form-group" align="center">
+      <button type="button" name="filter" onclick = 'ajaxFunction()'  class="btn btn-light">Search</button>
+  
+
+   </div>
+    <!--
+   <div class="row form-group md-form mr-3 ml-3 ">
+   <form method="post" action="login.php">
+    <div class="col-sm form-group">
+      <select name="filter_breed" id="filter_breed" class="form-control" value="<?php echo $breed_id; ?>" required>
+       <option value="">Select Breed</option>
+                <?php
+                    $query = "SELECT * from breed";
+                    $result_type = mysqli_query($db,$query);
+                    while ($row = mysqli_fetch_assoc($result_type)){ ?>
+                    <option value="<?php echo $row['breed_id']; ?>"><?php echo $row['breed_name'];?>
+                    </option> <?php
+                                                                  }
+                ?>
+                </select>    </div>
+    
+    <div class="col-sm form-group">
+      <select name="filter_size" class="form-control" id="filter_size" value="<?php echo $size; ?>" required>
+       <option value="">Select Size</option>
+       <option value="S">Small</option>
+       <option value="M">Medium</option>
+       <option value="L">Large</option>   
+       <option value="XL">Extra-Large</option>
+      </select>    </div>
+       
+    <div class="col-sm form-group">
+      <select name="filter_city" class="form-control" id="filter_city" value="<?php echo $city_id; ?>">
                 <option>Select a city</option>
                 <?php
                     $query = "SELECT * from city";
@@ -108,36 +280,52 @@ include('dbconnect.php')
       
        <div class="row form-group md-form mr-3 ml-3 ">
         <div class="col-sm form-group">
-      <select name="filter_gender" class="form-control" value="<?php echo $gender; ?>" required>
+      <select name="filter_gender" class="form-control" id="filter_gender" value="<?php echo $gender; ?>" required>
        <option value="">Select Gender</option>
-       <option value="Female">Female</option>
-       <option value="Male">Male</option>
+       <option value="F">Female</option>
+       <option value="M">Male</option>
       </select>    </div>
        
            <div class="col-sm form-group">
-      <select name="filter_breeding" class="form-control" value="<?php echo $breeding; ?>" required>
+      <select name="filter_breeding" class="form-control" id="filter_breeding" value="<?php echo $breeding; ?>" required>
        <option value="">Breeding Cycle</option>
-       <option value="Yes">Yes</option>
-       <option value="No">No</option>
+       <option value="1">Yes</option>
+       <option value="0">No</option>
       </select>    </div>
        
                <div class="col-sm form-group">
-      <select name="filter_meeting" class="form-control" value="<?php echo $meeting; ?>" required>
+      <select name="filter_meeting" class="form-control" id="filter_meeting" value="<?php echo $meeting; ?>" required>
        <option value="">Available to Meet</option>
-       <option value="Yes">Yes</option>
-       <option value="No">No</option>
+       <option value="1">Yes</option>
+       <option value="0">No</option>
       </select>    </div>
 
  </div>
      <div class="form-group" align="center">
-      <button type="button" name="filter"  class="btn btn-light">Search</button>
+      <button type="button" name="filter" onclick = 'ajaxFunction()' class="btn btn-light">Search</button>
   
+  
+  
+   </div> -->
+</form>
+<div class="row">
+<div class="col-sm-1">
+<button class="previous round">&#8249;</button></div>
+<div class="col-sm-10">
+<div id = 'ajaxDiv'>
 
-   </div>
+<div class="form-panel active">Your result will display here</div>
+</div>
+</div>
+<div class="col-sm-1">
+<button class="next round">&#8250;</button></div>
+</div>
+<br>
+
 
 
           <br><br>  
-        <div class="row form-group md-form mr-3 ml-3 text-white">       
+       <!-- <div class="row form-group md-form mr-3 ml-3 text-white">       
     <div class="col-sm form-group">      
 
       <div class="form-group md-form mr-3 ml-3 text-white">
