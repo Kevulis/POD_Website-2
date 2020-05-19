@@ -66,20 +66,20 @@
         <?php include('errors.php'); ?>     
     <br>
 <div class="form-group md-form mr-3 ml-3 text-white"><br>
-  	  <input type="email" class="form-control" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter your e-mail" value="<?php echo $email; ?>" required>
+  	  <input type="email" class="form-control" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter your e-mail*" value="<?php echo $email; ?>" required>
   	</div>
 <div class="form-group md-form mr-3 ml-3 text-white">
-    <label class="text-muted text-white">Please choose an password with 6 or more characters</label>
-  	  <input type="password" class="form-control" name="password_1" minlenght="6" maxlength="12" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Password (UpperCase, LowerCase, Number/SpecialChar and min 6 Chars)" placeholder="Enter your password" value="<?php echo $password_1; ?>" required>
+    <label class="text-muted text-white"><small>Please choose a password from 6 to 12 characters. <br> It should contain at least 1 upper case, number and special character.</small></label>
+  	  <input type="password" class="form-control" name="password_1" minlenght="6" maxlength="12" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Password (UpperCase, LowerCase, Number/SpecialChar and min 6 Chars)" placeholder="Enter your password*" value="<?php echo $password_1; ?>" required>
   	</div>
 <div class="form-group md-form mr-3 ml-3 text-white">
-  	  <input type="password" class="form-control" name="password_2" minlenght="6" maxlength="12" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Please confirm your passoword!" placeholder="Re-enter your password" value="<?php echo $password_2; ?>" required>
+  	  <input type="password" class="form-control" name="password_2" minlenght="6" maxlength="12" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Please confirm your passoword!" placeholder="Re-enter your password*" value="<?php echo $password_2; ?>" required>
   	</div>
           
           
     <div class="form-group mr-3 ml-3 text-white"><br>
     <select class="custom-select" name="security_question" value="<?php echo $security_question; ?>" required>
-      <option value="">Select your security question</option>
+      <option value="">Select your security question*</option>
       <option value="1">What primary school did you attend?</option>
       <option value="2">What is the middle name of your mother?</option>
       <option value="3">What is the name of your first pet?</option>
@@ -87,7 +87,7 @@
            </div>
             
              <div class="form-group mr-3 ml-3" >
-          <input  class="form-control" name="security_answer" placeholder="Enter your answer" value="<?php echo $security_answer; ?>" required><br>
+          <input  class="form-control" name="security_answer" placeholder="Enter your answer*" value="<?php echo $security_answer; ?>" required><br>
   
      <br>
   </div>            
@@ -95,7 +95,7 @@
  <div class="form-group form-row mr-3 ml-3">
      <div class="col-md-6 mb-3" >
  <select required="required" class="form-control" name= "city_id" value="<?php echo $city_id; ?>">
-                <option>Select your city</option>
+                <option>Select your city*</option>
                 <?php
                     $query = "SELECT * from city";
                     $result_type = mysqli_query($db,$query);
@@ -115,7 +115,7 @@
                 </div>
 <div class="form-group mr-3 ml-3 text-white"><br>
 <input type="radio" id="terms" name="terms" value="agree" required>
-  <label for="agree"> I have read and agreed with the <a href="terms.html" class="text-white"> "Terms & Conditions".</a></label><br>
+  <label for="agree"> I have read and agreed with the <a href="terms.html" class="text-white"> "Terms & Conditions".*</a></label><br>
      </div>
      
 <div class="form-group md-form mr-3 ml-3 text-white"><br>

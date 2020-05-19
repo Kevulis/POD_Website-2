@@ -167,7 +167,7 @@ $('.next').click(function () {
  
           <div class="container" align="center">
                
-              <img src="img/mydog.png" align="center" width="400" height="150">
+              <img src="img/search.png" align="center" width="400" height="150">
               <br> <br>
         <div class="card" style="width: 60rem; background-image: url('img/bk-01.png'); background-size: cover;" align="center"><br> 
 <!--      <div class="jumbotron" style="background-image: url('img/bk-01.png'); background-size: cover;">-->
